@@ -6,15 +6,18 @@ const posts = await getPosts();
 ---
 <BaseLayout title="Blog" description="Writing by Reyna Gowie on AI, education, and who gets a say in the systems that shape people's lives.">
   <div class="wrap">
+    <div class="page-head head-center">
     <p class="eyebrow">Blog</p>
     <h1>Writing</h1>
     <p class="lede">Short essays on AI, education, and who gets a say in the systems that shape our lives.</p>
+    </div>
     <div class="grid">
       {posts.map((post) => <ArticleCard post={post} headingLevel="h2" />)}
     </div>
   </div>
 </BaseLayout>
 <style>
-  .grid { display: grid; gap: var(--space-4); margin-top: var(--space-4); }
-  @media (min-width: 48rem) { .grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); } }
+  .head-center { text-align: center; }
+  .head-center .lede { margin-inline: auto; }
+  .grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 22rem)); justify-content: center; }
 </style>

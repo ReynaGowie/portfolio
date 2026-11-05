@@ -35,6 +35,9 @@ const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
     {canonical && <meta property="og:url" content={canonical} />}
     {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
     <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" />
     <link rel="icon" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} type="image/svg+xml" />
   </head>
   <body>

@@ -12,13 +12,13 @@ const posts = await getPosts();
 <BaseLayout title={profile.name} description={`${profile.name}: ${profile.shortBio} Writing on AI, education, and who gets a say in the systems that shape people's lives.`}>
   <section class="wrap hero">
     <div class="hero-text">
-      <p class="eyebrow">{profile.name}</p>
+      <p class="hello">Hi, I’m Reyna</p>
       <h1>{profile.headline}</h1>
       <p class="lede">I’m Reyna Gowie, an Enterprise Technology Integration student at Penn State and an AI Engineer Co-Op at IBM.</p>
       <p class="lede">My work connects technology, education, and a question I keep coming back to: who gets a say in the systems that shape their lives?</p>
       <div class="actions">
         <a class="btn btn-primary" href={url('/projects/')}>View my work</a>
-        <a class="btn btn-secondary" href={url('/blog/')}>Read my writing</a>
+        <a class="btn btn-secondary" href={url('/blog/')}>Read my writing <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
     <div class="hero-photo"><Headshot /></div>
@@ -27,7 +27,7 @@ const posts = await getPosts();
   <section class="wrap section" aria-labelledby="work-h">
     <div class="section-head">
       <h2 id="work-h">Selected work</h2>
-      <a href={url('/projects/')}>All projects</a>
+      <p>Courses, communities, and talks built around who gets a say.</p>
     </div>
     <div class="grid-3">
       <WorkFeature kicker="Course design" status={`Launching ${guessWho.term}`} title={guessWho.title} href={url('/projects/#guess-who')}>
@@ -40,25 +40,27 @@ const posts = await getPosts();
         <p>A State of State 2026 talk on what a degree should demonstrate when AI can produce the work that used to prove learning.</p>
       </WorkFeature>
     </div>
+    <p class="section-more"><a class="btn btn-secondary" href={url('/projects/')}>All projects <span class="arrow" aria-hidden="true">→</span></a></p>
   </section>
 
   <section class="wrap section" aria-labelledby="writing-h">
     <div class="section-head">
       <h2 id="writing-h">Writing</h2>
-      <a href={url('/blog/')}>All posts</a>
+      <p>Short essays on AI, education, and who gets a say.</p>
     </div>
-    <div class="grid-3">
+    <div class="grid-posts">
       {posts.map((post) => <ArticleCard post={post} />)}
     </div>
+    <p class="section-more"><a class="btn btn-secondary" href={url('/blog/')}>All posts <span class="arrow" aria-hidden="true">→</span></a></p>
   </section>
 
   <section class="wrap section">
-    <div class="cta">
+    <div class="cta card-surface">
       <h2>Let’s talk</h2>
       <p>I’m glad to hear from people working on AI, technology strategy, education, or the policy questions around them.</p>
       <div class="actions">
         <a class="btn btn-primary" href={profile.linkedin} rel="noopener">Connect on LinkedIn</a>
-        <a class="btn btn-secondary" href={url('/contact/')}>Contact</a>
+        <a class="btn btn-secondary" href={url('/contact/')}>Contact <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -66,11 +68,15 @@ const posts = await getPosts();
 
 <style>
   .hero { display: grid; gap: var(--space-4); align-items: center; padding-top: var(--space-3); }
-  @media (min-width: 52rem) { .hero { grid-template-columns: 1.4fr 1fr; } .hero-photo { justify-self: end; } }
+  @media (min-width: 52rem) { .hero { grid-template-columns: 1.25fr 1fr; gap: var(--space-5); } .hero-photo { justify-self: center; } }
+  .hello { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.75rem; }
+  .hero h1 { max-width: 14ch; }
   .hero-photo { width: 100%; max-width: 22rem; }
-  .grid-3 { display: grid; gap: var(--space-4); }
-  @media (min-width: 48rem) { .grid-3 { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); } }
-  .cta { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4) var(--space-3); }
-  .cta h2 { font-size: var(--step-2); }
-  .cta p { color: var(--muted); max-width: 38rem; }
+  .grid-3 { display: grid; gap: var(--space-3); }
+  @media (min-width: 48rem) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+  .grid-posts { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 22rem)); justify-content: center; }
+  .cta { text-align: center; padding: var(--space-5) var(--space-3); }
+  .cta h2 { font-style: italic; }
+  .cta p { color: var(--muted); max-width: 34rem; margin-inline: auto; }
+  .cta .actions { justify-content: center; }
 </style>
