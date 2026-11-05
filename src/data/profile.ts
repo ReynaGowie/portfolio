@@ -16,7 +16,10 @@ export const profile = {
   email: null as string | null,
   // Set to the real file path once an approved headshot is added to
   // public/images/. While null, a clearly marked development placeholder shows.
-  headshot: null as null | { src: string; alt: string },
+  headshot: {
+    src: '/images/reyna-gowie-headshot.jpg',
+    alt: 'Reyna Gowie smiling in a black blazer, standing outside a glass building on a sunny day.',
+  } as null | { src: string; alt: string },
 };
 
 // Course details change, so they live in one place.

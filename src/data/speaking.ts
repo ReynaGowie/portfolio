@@ -4,7 +4,7 @@ export const stateOfState = {
   host: 'Penn State',
   title: 'What Should a Penn State Degree Mean Now?',
   date: 'November 4, 2026',
-  delivered: false, // flip to true once Reyna confirms the talk happened
+  delivered: true, // confirmed by Reyna 2026-11-05
   question:
     'What should a degree demonstrate when AI can produce work that used to count as evidence of learning?',
   capabilities: ['Understand', 'Question', 'Judge', 'Create', 'Contribute'],

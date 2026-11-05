@@ -6,7 +6,7 @@ const { size = 'lg' } = Astro.props;
 const shot = profile.headshot;
 ---
 {shot ? (
-  <img class={`headshot ${size}`} src={url(shot.src)} alt={shot.alt} width="480" height="600" />
+  <img class={`headshot ${size}`} src={url(shot.src)} alt={shot.alt} width="800" height="1000" />
 ) : (
   <div class={`headshot placeholder ${size}`} role="img" aria-label="Headshot placeholder for development; replace with an approved photo">
     <span class="initials" aria-hidden="true">RG</span>
