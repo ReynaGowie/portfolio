@@ -1,9 +1,9 @@
 ---
 title: What Should a Degree Prove When AI Can Do the Homework?
-description: "Working description, replace when the post is written: AI changes what a finished assignment can show on its own, so universities should make reasoning and judgment visible."
+description: "A perfect assignment can leave a basic question unanswered: did the student learn anything?"
 topic: AI and education
 order: 1
-status: outline
+status: review
 image:
   src: /images/five-capabilities.svg
   alt: "Five labeled capabilities in a row: understand, question, judge, create, contribute."
@@ -14,17 +14,35 @@ image:
   placeholder: false
   approved: false
 sources:
-  - publisher: eCampus News
-    title: "Accreditation's AI reckoning: Can colleges still prove students are learning?"
-    url: https://www.ecampusnews.com/ai-in-education/2026/07/29/accreditations-ai-reckoning-can-colleges-still-prove-students-are-learning/
-    date: "2026-07-27 (updated 2026-07-29)"
-    claim: Finished work alone no longer reliably shows a student's own thinking; suggests drafts, decision logs, oral defenses, and disclosed AI use over detection.
+  - publisher: Inside Higher Ed (Emma Whitford)
+    title: MIT AI Report Calls for Alternative Grading, More Social Learning
+    url: https://www.insidehighered.com/news/tech-innovation/artificial-intelligence/2026/08/28/mit-ai-report-calls-alternative-grading
+    date: "2026-08-28"
+    claim: An MIT committee cited "increased difficulty in assessing students' mastery and progress" and recommended changes to grading and teaching.
 ---
 
-**Writing scaffold (dev preview only, never published).** Replace everything below with your own draft, then change `status` to `draft`.
+A perfect assignment can leave a basic question unanswered: did the student learn anything? AI makes that question harder to avoid when polished work arrives without much evidence of the thinking behind it.
 
-- **Your argument (from your brief):** AI changes what a finished assignment can show on its own, so universities should make reasoning and judgment visible instead of treating polished output as proof of learning.
-- **Verified source to discuss in the body:** [eCampus News, "Accreditation's AI reckoning"](https://www.ecampusnews.com/ai-in-education/2026/07/29/accreditations-ai-reckoning-can-colleges-still-prove-students-are-learning/) by Dr. John Johnston (July 27, 2026). Main claims: a finished artifact no longer shows the student's own thinking; it suggests drafts, decision logs, oral defenses, and disclosed AI use instead of relying on detection software.
-- **Tie-in:** your State of State talk and the five capabilities (understand, question, judge, create, contribute). Describe it as a scheduled talk unless you confirm it happened.
-- **Guardrails from your brief:** don't argue that every essay fails as evidence or that tool bans are never useful. Label any hypothetical example as hypothetical.
-- **Requirements:** 280–350 body words, two or more `##` headings, paragraphs of about 25–35 words, main point near the top, link the source inline.
+As a student studying technology, I want universities to explain what their degrees demonstrate. Completing assignments matters, but a convincing submission doesn’t tell us everything about what someone understands.
+
+## What the finished assignment can tell us
+
+In August, [Inside Higher Ed reported on an MIT committee’s recommendations](https://www.insidehighered.com/news/tech-innovation/artificial-intelligence/2026/08/28/mit-ai-report-calls-alternative-grading) for responding to AI. The committee identified growing difficulty assessing students’ mastery and called for changes to teaching and grading.
+
+I’m interested in that willingness to reconsider assessment. If students can complete an assignment without practicing the skill it’s supposed to measure, instructors need to examine what they’re actually grading.
+
+An essay can still reveal learning. A conversation about its argument or an explanation of revisions could help an instructor see how well the student understands what they submitted.
+
+Universities already ask students to show their work. AI gives them a reason to be more specific about what that means and whether the assignment makes that thinking visible.
+
+## What I want a degree to demonstrate
+
+I think a degree should signal that someone can understand, question, judge, create, and contribute. Those capabilities should be visible in what graduates can do, beyond the grades they earned.
+
+A student using AI to propose a solution should still explain the problem, check its assumptions, and defend their choices. Producing an answer doesn’t settle whether they can evaluate it.
+
+Employers have a stake in this, too. Someone who produces polished material still needs to recognize errors, explain a tradeoff, and take responsibility for decisions made using that material.
+
+Students should help redesign these assessments. We’re preparing for workplaces where using AI and exercising judgment will happen together, and our education should give us practice doing both responsibly.
+
+A finished assignment should help an instructor understand what a student can do. When it leaves that uncertain, the work of checking for learning is still unfinished, however good the submission looks.
