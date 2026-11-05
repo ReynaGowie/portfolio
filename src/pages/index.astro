@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Headshot from '../components/Headshot.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import WorkFeature from '../components/WorkFeature.astro';
+import { profile, guessWho } from '../data/profile';
+import { stateOfState } from '../data/speaking';
+import { getPosts } from '../lib/posts';
+import { url } from '../lib/url';
+const posts = await getPosts();
+---
+<BaseLayout title={profile.name} description={`${profile.name}: ${profile.shortBio} Writing on AI, education, and who gets a say in the systems that shape people's lives.`}>
+  <section class="wrap hero">
+    <div class="hero-text">
+      <p class="eyebrow">{profile.name}</p>
+      <h1>{profile.headline}</h1>
+      <p class="lede">I’m Reyna Gowie, an Enterprise Technology Integration student at Penn State and an AI Engineer Co-Op at IBM.</p>
+      <p class="lede">My work connects technology, education, and a question I keep coming back to: who gets a say in the systems that shape their lives?</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={url('/projects/')}>View my work</a>
+        <a class="btn btn-secondary" href={url('/blog/')}>Read my writing</a>
+      </div>
+    </div>
+    <div class="hero-photo"><Headshot /></div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="work-h">
+    <div class="section-head">
+      <h2 id="work-h">Selected work</h2>
+      <a href={url('/projects/')}>All projects</a>
+    </div>
+    <div class="grid-3">
+      <WorkFeature kicker="Course design" status={`Launching ${guessWho.term}`} title={guessWho.title} href={url('/projects/#guess-who')}>
+        <p>A philosophy seminar I designed as an undergraduate, with privacy and consent built into how students represent each other.</p>
+      </WorkFeature>
+      <WorkFeature kicker="Student leadership" status="Current" title="Students Teaching Students" href={url('/projects/#sts')}>
+        <p>As president, I help Penn State undergraduates turn their ideas into real, for-credit courses with faculty supervision.</p>
+      </WorkFeature>
+      <WorkFeature kicker="Speaking" status={stateOfState.delivered ? stateOfState.date : `Scheduled · ${stateOfState.date}`} title={stateOfState.title} href={url('/speaking/')}>
+        <p>A State of State 2026 talk on what a degree should demonstrate when AI can produce the work that used to prove learning.</p>
+      </WorkFeature>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="writing-h">
+    <div class="section-head">
+      <h2 id="writing-h">Writing</h2>
+      <a href={url('/blog/')}>All posts</a>
+    </div>
+    <div class="grid-3">
+      {posts.map((post) => <ArticleCard post={post} />)}
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="cta">
+      <h2>Let’s talk</h2>
+      <p>I’m glad to hear from people working on AI, technology strategy, education, or the policy questions around them.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={profile.linkedin} rel="noopener">Connect on LinkedIn</a>
+        <a class="btn btn-secondary" href={url('/contact/')}>Contact</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { display: grid; gap: var(--space-4); align-items: center; padding-top: var(--space-3); }
+  @media (min-width: 52rem) { .hero { grid-template-columns: 1.4fr 1fr; } .hero-photo { justify-self: end; } }
+  .hero-photo { width: 100%; max-width: 22rem; }
+  .grid-3 { display: grid; gap: var(--space-4); }
+  @media (min-width: 48rem) { .grid-3 { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); } }
+  .cta { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4) var(--space-3); }
+  .cta h2 { font-size: var(--step-2); }
+  .cta p { color: var(--muted); max-width: 38rem; }
+</style>

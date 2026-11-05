@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Headshot from '../components/Headshot.astro';
+import { profile, guessWho } from '../data/profile';
+import { url } from '../lib/url';
+---
+<BaseLayout title="About" description={`About ${profile.name}: Enterprise Technology Integration at Penn State, AI Engineer Co-Op at IBM, and president of Students Teaching Students.`}>
+  <div class="wrap about">
+    <div class="text">
+      <p class="eyebrow">About</p>
+      <h1>About me</h1>
+      <div class="prose">
+        <p>I’m interested in what happens between a system working as designed and actually working for someone.</p>
+        <p>At Penn State, I study Enterprise Technology Integration: how organizations choose, build, and run technology systems. I’m a Millennium Scholar and am also earning the Smeal College Business Fundamentals Certificate. Alongside school, I work as an AI Engineer Co-Op at IBM, applying AI to business problems.</p>
+        <p>Some of my building happens outside software. As president of Students Teaching Students, I help undergraduates turn their ideas into real, for-credit courses. I’ve also designed my own: <em>{guessWho.title}</em>, a philosophy seminar launching in {guessWho.term}.</p>
+        <p>Through speaking and youth policy participation, I explore who shapes technology and what education should prepare us to do.</p>
+        <p>Across these interests, I want to build systems people can question, influence, and use on their own terms.</p>
+
+        <h2>Education and roles</h2>
+        <ul>
+          <li><strong>{profile.school}</strong>, {profile.major}, expected {profile.expectedGraduation}</li>
+          <li>{profile.scholar}</li>
+          <li>{profile.certificate}</li>
+          <li>{profile.ibmTitle}. {profile.ibmSentence}</li>
+          <li>President, Students Teaching Students</li>
+          <li>Creator, {guessWho.code}, <em>{guessWho.title}</em> ({guessWho.term})</li>
+        </ul>
+        <p><a href={url('/projects/')}>See selected work</a> or <a href={url('/speaking/')}>read about my speaking</a>.</p>
+      </div>
+    </div>
+    <aside class="photo"><Headshot size="md" /></aside>
+  </div>
+</BaseLayout>
+<style>
+  .about { display: grid; gap: var(--space-4); }
+  @media (min-width: 56rem) { .about { grid-template-columns: 1fr 16rem; } .photo { order: 2; padding-top: var(--space-5); } }
+  h1 { font-size: var(--step-3); max-width: 36rem; }
+</style>

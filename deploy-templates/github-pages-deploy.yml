@@ -1,0 +1,54 @@
+# INACTIVE TEMPLATE. GitHub only runs workflows inside .github/workflows/,
+# so this file does nothing where it sits. To publish on GitHub Pages:
+#   1. Copy it to .github/workflows/deploy.yml
+#   2. Edit SITE_URL and BASE_PATH below
+#   3. In the repo: Settings → Pages → Source: "GitHub Actions"
+# Based on the Astro docs (docs.astro.build/en/guides/deploy/github/) and
+# GitHub's starter workflow (github.com/actions/starter-workflows, pages/astro.yml).
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  # User site repo named <username>.github.io → BASE_PATH: ""
+  # Project repo → BASE_PATH: "/<repository-name>"
+  SITE_URL: https://YOUR-GITHUB-USERNAME.github.io
+  BASE_PATH: /YOUR-REPOSITORY-NAME
+  PUBLIC_INDEXABLE: "false" # set "true" when you want search engines to index the site
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

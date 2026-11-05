@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+---
+<BaseLayout title="Contact" description="How to reach Reyna Gowie for professional conversations.">
+  <div class="narrow">
+    <p class="eyebrow">Contact</p>
+    <h1>Let’s talk</h1>
+    <p class="lede">I’m open to conversations about AI engineering, AI product, technology strategy, speaking, and research.</p>
+    <p>The best way to reach me is a message on LinkedIn.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href={profile.linkedin} rel="noopener">Connect on LinkedIn</a>
+      {profile.email && <a class="btn btn-secondary" href={`mailto:${profile.email}`}>Email me</a>}
+    </div>
+  </div>
+</BaseLayout>

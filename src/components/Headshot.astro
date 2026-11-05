@@ -1,0 +1,26 @@
+---
+import { profile } from '../data/profile';
+import { url } from '../lib/url';
+interface Props { size?: 'lg' | 'md' }
+const { size = 'lg' } = Astro.props;
+const shot = profile.headshot;
+---
+{shot ? (
+  <img class={`headshot ${size}`} src={url(shot.src)} alt={shot.alt} width="480" height="600" />
+) : (
+  <div class={`headshot placeholder ${size}`} role="img" aria-label="Headshot placeholder for development; replace with an approved photo">
+    <span class="initials" aria-hidden="true">RG</span>
+    {import.meta.env.DEV && <span class="ph-label">Headshot placeholder</span>}
+  </div>
+)}
+<style>
+  .headshot { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--border); }
+  .lg { max-width: 22rem; }
+  .md { max-width: 16rem; }
+  .placeholder {
+    display: grid; place-items: center; align-content: center; gap: 0.5rem;
+    background: linear-gradient(160deg, var(--accent-soft), #e9e2d8);
+  }
+  .initials { font-family: var(--serif); font-size: 4rem; color: var(--accent); opacity: 0.7; }
+  .ph-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); border: 1px dashed var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; }
+</style>

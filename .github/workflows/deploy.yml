@@ -1,0 +1,52 @@
+# Builds the site and publishes it to GitHub Pages on every push to main.
+# Repo: ReynaGowie/portfolio → site at https://reynagowie.github.io/portfolio/
+# Requires: Settings → Pages → Source: "GitHub Actions".
+# Based on docs.astro.build/en/guides/deploy/github/ and GitHub's
+# starter workflow (actions/starter-workflows, pages/astro.yml).
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  SITE_URL: https://reynagowie.github.io
+  BASE_PATH: /portfolio    # project site, served under /portfolio/
+  PUBLIC_INDEXABLE: "false" # flip to "true" when you want search engines to index the site
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: actions/configure-pages@v6
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:content
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url, readingMinutes } from '../lib/url';
+interface Props { post: CollectionEntry<'blog'>; headingLevel?: 'h2' | 'h3' }
+const { post, headingLevel = 'h3' } = Astro.props;
+const H = headingLevel;
+const href = url(`/blog/${post.id}/`);
+const mins = readingMinutes(post.body);
+const showStatus = import.meta.env.DEV && post.data.status !== 'final';
+---
+<article class="card">
+  <a class="img-link" href={href} tabindex="-1" aria-hidden="true">
+    <img src={url(post.data.image.src)} alt="" loading="lazy" width="1200" height="675" />
+  </a>
+  <div class="body">
+    <p class="meta"><span>{post.data.topic}</span> · <span>{mins} min read</span>{showStatus && <span class="status">{post.data.status}</span>}</p>
+    <H class="title"><a href={href}>{post.data.title}</a></H>
+    <p class="excerpt">{post.data.description}</p>
+  </div>
+</article>
+<style>
+  .card { display: flex; flex-direction: column; border-top: 1px solid var(--border); padding-top: var(--space-2); }
+  .img-link img { border-radius: var(--radius); border: 1px solid var(--border); aspect-ratio: 16 / 9; object-fit: cover; width: 100%; background: var(--surface); }
+  .body { padding-top: var(--space-2); }
+  .meta { font-size: var(--step--1); color: var(--muted); display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.4rem; }
+  .title { font-size: var(--step-1); margin-bottom: 0.5rem; }
+  .title a { color: var(--text); text-decoration: none; }
+  .title a:hover { color: var(--accent); text-decoration: underline; }
+  .excerpt { color: var(--muted); margin: 0; }
+</style>

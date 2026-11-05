@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d">
+  <title id="t">Fictional approval screen for an AI assistant</title>
+  <desc id="d">Two requests. Suggest three meeting times: done automatically. Send invitations to six people: waiting for approval, with Approve and Edit buttons.</desc>
+  <rect width="1200" height="675" fill="#faf7f2"/>
+  <text x="80" y="95" font-family="system-ui, sans-serif" font-size="18" fill="#5c5650" letter-spacing="2">FICTIONAL INTERFACE · NOT A REAL PRODUCT</text>
+  <rect x="80" y="125" width="1040" height="480" rx="14" fill="#fff" stroke="#e3ddd3" stroke-width="2"/>
+  <text x="120" y="185" font-family="Georgia, serif" font-size="32" fill="#1c1a1a">Your assistant’s plan</text>
+  <g font-family="system-ui, sans-serif">
+    <rect x="120" y="220" width="960" height="140" rx="10" fill="#faf7f2" stroke="#e3ddd3" stroke-width="2"/>
+    <circle cx="165" cy="290" r="20" fill="#2f6b4f"/><path d="M155 290 l7 8 14 -16" fill="none" stroke="#fff" stroke-width="4"/>
+    <text x="205" y="275" font-size="24" fill="#1c1a1a">Suggest three meeting times</text>
+    <text x="205" y="310" font-size="19" fill="#5c5650">Easy to undo · nothing leaves your calendar · done automatically</text>
+    <rect x="120" y="385" width="960" height="185" rx="10" fill="#f1e8ee" stroke="#5b2a4e" stroke-width="2"/>
+    <circle cx="165" cy="445" r="20" fill="#5b2a4e"/><text x="165" y="453" font-size="24" fill="#fff" text-anchor="middle" font-weight="700">?</text>
+    <text x="205" y="438" font-size="24" fill="#1c1a1a">Send invitations to 6 people</text>
+    <text x="205" y="473" font-size="19" fill="#5c5650">Other people see it · hard to take back · waiting for you</text>
+    <rect x="205" y="500" width="150" height="48" rx="8" fill="#5b2a4e"/><text x="280" y="531" font-size="20" fill="#fff" text-anchor="middle" font-weight="600">Approve</text>
+    <rect x="375" y="500" width="150" height="48" rx="8" fill="#fff" stroke="#5b2a4e" stroke-width="2"/><text x="450" y="531" font-size="20" fill="#5b2a4e" text-anchor="middle" font-weight="600">Edit first</text>
+  </g>
+</svg>

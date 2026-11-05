@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getPosts } from '../../lib/posts';
+const posts = await getPosts();
+---
+<BaseLayout title="Blog" description="Writing by Reyna Gowie on AI, education, and who gets a say in the systems that shape people's lives.">
+  <div class="wrap">
+    <p class="eyebrow">Blog</p>
+    <h1>Writing</h1>
+    <p class="lede">Short essays on AI, education, and who gets a say in the systems that shape our lives.</p>
+    <div class="grid">
+      {posts.map((post) => <ArticleCard post={post} headingLevel="h2" />)}
+    </div>
+  </div>
+</BaseLayout>
+<style>
+  .grid { display: grid; gap: var(--space-4); margin-top: var(--space-4); }
+  @media (min-width: 48rem) { .grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); } }
+</style>

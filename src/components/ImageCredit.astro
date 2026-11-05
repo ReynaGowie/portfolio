@@ -1,0 +1,20 @@
+---
+import { url } from '../lib/url';
+interface Props {
+  src: string; alt: string; caption: string; creator: string; sourceUrl: string; license: string;
+}
+const { src, alt, caption, creator, sourceUrl, license } = Astro.props;
+const external = /^https?:\/\//.test(sourceUrl);
+const sourceHref = external ? sourceUrl : url(sourceUrl);
+---
+<figure>
+  <img src={url(src)} alt={alt} loading="lazy" width="1200" height="675" />
+  <figcaption>
+    {caption}
+    <span class="credit"> {creator}.{external && ` ${license}.`} <a href={sourceHref} rel={external ? 'noopener' : undefined}>Image source<span class="sr-only"> for: {alt}</span></a></span>
+  </figcaption>
+</figure>
+<style>
+  .credit { display: block; margin-top: 0.25rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>

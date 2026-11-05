@@ -1,0 +1,64 @@
+---
+import { nav, profile } from '../data/profile';
+import { url } from '../lib/url';
+const current = Astro.url.pathname;
+const isCurrent = (href: string) => current.startsWith(url(href));
+---
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href={url('/')}>{profile.name}</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>
+      <span class="menu-label">Menu</span>
+    </button>
+    <nav id="site-nav" aria-label="Main">
+      <ul>
+        {nav.map((item) => (
+          <li>
+            <a href={url(item.href)} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Progressive enhancement: without JS the nav simply stays visible.
+  const btn = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const navEl = document.getElementById('site-nav');
+  if (btn && navEl) {
+    btn.hidden = false;
+    document.documentElement.classList.add('js');
+    const set = (open: boolean) => {
+      btn.setAttribute('aria-expanded', String(open));
+      navEl.dataset.open = String(open);
+      btn.querySelector('.menu-label')!.textContent = open ? 'Close' : 'Menu';
+    };
+    btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); }
+    });
+  }
+</script>
+
+<style>
+  .site-header { border-bottom: 1px solid var(--border); background: var(--bg); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; padding-block: var(--space-2); }
+  .brand { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--text); text-decoration: none; }
+  .brand:hover { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: var(--space-3); margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a { color: var(--text); text-decoration: none; font-weight: 500; padding-block: 0.25rem; border-bottom: 2px solid transparent; }
+  nav a:hover { color: var(--accent); border-bottom-color: var(--border); }
+  nav a[aria-current='page'] { color: var(--accent); border-bottom-color: var(--accent); }
+  .menu-toggle {
+    font: inherit; font-weight: 600; background: transparent; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: var(--radius); padding: 0.4rem 0.9rem; cursor: pointer;
+  }
+  @media (min-width: 48rem) { .menu-toggle { display: none; } }
+  @media (max-width: 47.99rem) {
+    :global(html.js) nav { display: none; width: 100%; }
+    :global(html.js) nav[data-open='true'] { display: block; }
+    nav ul { flex-direction: column; gap: 0; padding-block: var(--space-1); }
+    nav li a { display: block; padding: 0.7rem 0; border-bottom: 1px solid var(--border); }
+  }
+</style>

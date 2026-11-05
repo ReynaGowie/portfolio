@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { guessWho } from '../data/profile';
+import { url } from '../lib/url';
+---
+<BaseLayout title="Projects" description={`Selected work by Reyna Gowie: the ${guessWho.title} course and leadership of Students Teaching Students.`}>
+  <div class="narrow">
+    <p class="eyebrow">Projects</p>
+    <h1>Selected work</h1>
+    <p class="lede">Some of my building happens outside software. These projects are about designing structures that give people more say in their own education.</p>
+  </div>
+
+  <article id="guess-who" class="narrow feature">
+    <p class="kicker">Course design <span class="status">In development · launching {guessWho.term}</span></p>
+    <h2><em>{guessWho.title}</em></h2>
+    <dl class="facts">
+      <div><dt>Course</dt><dd>{guessWho.code}, philosophy seminar</dd></div>
+      <div><dt>Term</dt><dd>{guessWho.term}, {guessWho.schedule}</dd></div>
+      <div><dt>Seats</dt><dd>{guessWho.seats}</dd></div>
+      <div><dt>Faculty advisor</dt><dd>{guessWho.advisor}</dd></div>
+    </dl>
+
+    <div class="prose">
+      <h3>Overview</h3>
+      <p>Students explore identity, recognition, and representation. For the final project, each student represents a classmate using an identity card and a presentation. I designed the course as an undergraduate, with faculty advising and revisions.</p>
+
+      <h3>The design challenge</h3>
+      <p>Handling someone else’s story makes privacy and consent part of the course design. The tradeoff was protecting privacy without making an open discussion seminar feel excessively procedural.</p>
+
+      <h3>Decisions</h3>
+      <ul>
+        <li>On Professor Christman’s suggestion, I added a two-week Unit 0, <em>Foundations of Identity and Representation</em>, so ethics and foundations come before partner work.</li>
+        <li>I wrote <em>Partner Work: Consent, Privacy &amp; Safety Guidelines</em>, covering consent, privacy, sensitive information, the right not to share, respectful representation, the right to correct a representation, and an alternative assignment.</li>
+        <li>I divided the final project into six graded checkpoints instead of a single final submission.</li>
+        <li>I weighed when to assign partners and asked for my advisor’s input.</li>
+      </ul>
+    </div>
+
+    <figure>
+      <img src={url('/images/guess-who-structure.svg')} alt="Diagram of the course sequence: a two-week Unit 0 on foundations, then partner work under consent and privacy guidelines, then six graded checkpoints leading to the final presentation." width="1200" height="675" loading="lazy" />
+      <figcaption>How the course is sequenced so ethics and consent come before partner work. Illustration made for this site. <a href={url('/images/guess-who-structure.svg')}>Image source</a></figcaption>
+    </figure>
+
+    <div class="prose">
+      <h3>Intended effect</h3>
+      <p>The goal is for students to keep control over their own stories while exploring how other people represent them. These are intended outcomes, not measured results.</p>
+
+      <h3>Status</h3>
+      <p>Listed for {guessWho.term}. The course hasn’t run yet. I wrote more about the design choices in <a href={url('/blog/why-students-should-help-design-their-own-education/')}>Why Students Should Help Design Their Own Education</a>.</p>
+    </div>
+  </article>
+
+  <article id="sts" class="narrow feature">
+    <p class="kicker">Student leadership <span class="status">Current</span></p>
+    <h2>Students Teaching Students</h2>
+    <div class="prose">
+      <p>I’m president of Students Teaching Students, a Penn State organization that helps undergraduates design and teach real, for-credit courses with faculty supervision.</p>
+    </div>
+  </article>
+</BaseLayout>
+<style>
+  .feature { margin-top: var(--space-5); padding-top: var(--space-3); border-top: 2px solid var(--accent); }
+  .feature h2 { font-size: var(--step-3); }
+  .kicker { font-size: var(--step--1); color: var(--muted); display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+  .prose h3 { font-size: var(--step-1); margin-top: var(--space-3); }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: var(--space-2); margin: var(--space-3) 0; padding: var(--space-2); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  .facts dt { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .facts dd { margin: 0; font-weight: 500; }
+</style>
