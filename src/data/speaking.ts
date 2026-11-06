@@ -12,7 +12,7 @@ export const stateOfState = {
     src: '/images/state-of-state-2026.jpg',
     alt: 'Reyna Gowie speaking into a handheld microphone at a clear podium with a laptop, in front of dark stage curtains.',
     caption: 'Giving my State of State 2026 talk at Penn State, November 4.',
-    // Photographer not yet confirmed. Add a credit here once known.
+    // Reyna confirmed 2026-11-05: fine to post, no credit wanted.
     credit: null as string | null,
   },
 };
@@ -27,8 +27,8 @@ export const iyc14 = {
     src: '/images/iyc14-youth-statement.jpg',
     alt: 'Reyna Gowie at a podium in front of an International Youth Conference backdrop, delivering a youth statement.',
     caption: 'Delivering my youth statement at IYC14 in New York City.',
-    // Frame from the IYC14 livestream. Confirm it's OK to post, then keep or adjust this credit.
-    credit: 'IYC14 livestream' as string | null,
+    // Reyna confirmed 2026-11-05: fine to post, no credit wanted.
+    credit: null as string | null,
   },
 };
 
