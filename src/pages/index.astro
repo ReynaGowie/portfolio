@@ -58,7 +58,7 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
       <a href={url('/blog/')}>All posts</a>
     </div>
     <div class="list">
-      {posts.map((post) => <ArticleRow post={post} />)}
+      {posts.map((post) => <ArticleRow post={post} showImage />)}
     </div>
   </section>
 
