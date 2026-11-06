@@ -30,6 +30,8 @@ const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="author" content={profile.name} />
+    <!-- Google Search Console ownership verification -->
+    <meta name="google-site-verification" content="OWjX48vji-k4BQURiG6GRxQoCNueg9IctYqgi0DcPF8" />
     {!indexable && <meta name="robots" content="noindex, nofollow" />}
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={fullTitle} />

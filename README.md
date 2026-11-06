@@ -4,6 +4,8 @@ A small static site built with [Astro](https://astro.build). There's no
 server, database, or login. Pages are plain HTML files generated from
 the files in `src/`.
 
+**History:** every change is listed by date in [CHANGELOG.md](CHANGELOG.md), and `git log` shows each commit.
+
 ## Run it on your computer
 
 You need Node.js 22.23 or newer (`node -v` to check).
