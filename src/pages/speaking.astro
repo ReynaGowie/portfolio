@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { profile } from '../data/profile';
 import { stateOfState, iyc14, participation } from '../data/speaking';
+import { url } from '../lib/url';
 ---
 <BaseLayout title="Speaking" description="Reyna Gowie's speaking and youth policy participation, including State of State 2026 and IYC14.">
   <div class="narrow">
@@ -16,6 +17,10 @@ import { stateOfState, iyc14, participation } from '../data/speaking';
       <p>{stateOfState.question}</p>
       <p>My answer centers on five capabilities a degree should signal:</p>
       <ul class="caps">{stateOfState.capabilities.map((c) => <li>{c}</li>)}</ul>
+      <figure>
+        <img src={url(stateOfState.photo.src)} alt={stateOfState.photo.alt} width="1200" height="800" loading="lazy" />
+        <figcaption>{stateOfState.photo.caption}{stateOfState.photo.credit && <> Photo: {stateOfState.photo.credit}.</>}</figcaption>
+      </figure>
     </section>
 
     <section class="item" aria-labelledby="iyc">

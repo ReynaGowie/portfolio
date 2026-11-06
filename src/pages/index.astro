@@ -45,6 +45,7 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
           <p class="meta">Speaking <span class="status">{talkStatus}</span></p>
           <h3><a href={url('/speaking/')}>{stateOfState.title}</a></h3>
           <p class="muted">A State of State 2026 talk on what a degree should demonstrate when AI can produce the work that used to prove learning.</p>
+          <img class="talk-photo" src={url(stateOfState.photo.src)} alt={stateOfState.photo.alt} width="1200" height="800" loading="lazy" />
         </article>
       </div>
     </div>
@@ -90,5 +91,6 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
   .side article:first-child { border-top: 0; padding-top: 0; }
   @media (max-width: 51.99rem) { .side article:first-child { border-top: 1px solid var(--border); padding-top: var(--space-3); } }
   .side p:last-child { margin: 0; }
+  .talk-photo { margin-top: var(--space-2); border-radius: var(--r); aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
   .flush { margin-top: 0; }
 </style>

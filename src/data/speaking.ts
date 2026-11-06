@@ -8,6 +8,13 @@ export const stateOfState = {
   question:
     'What should a degree demonstrate when AI can produce work that used to count as evidence of learning?',
   capabilities: ['Understand', 'Question', 'Judge', 'Create', 'Contribute'],
+  photo: {
+    src: '/images/state-of-state-2026.jpg',
+    alt: 'Reyna Gowie speaking into a handheld microphone at a clear podium with a laptop, in front of dark stage curtains.',
+    caption: 'Giving my State of State 2026 talk at Penn State, November 4.',
+    // Photographer not yet confirmed. Add a credit here once known.
+    credit: null as string | null,
+  },
 };
 
 export const iyc14 = {
