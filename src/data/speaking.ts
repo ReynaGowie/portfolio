@@ -34,6 +34,31 @@ export const iyc14 = {
 
 export const participation = [
   {
+    event: 'UNA-USA Town Hall with Candidates for UN Secretary-General',
+    when: '2026, United Nations Headquarters',
+    label: 'Attended',
+  },
+  {
+    event: 'World Bank Group Youth Summit 2026',
+    when: '2026, virtual',
+    label: 'Virtual delegate',
+  },
+  {
+    event: 'SDSN Youth and Ford Foundation Americas Consultation',
+    when: '2026',
+    label: 'Contributed written youth perspectives on AI and sustainable development',
+  },
+  {
+    event: 'EuroDIG 2026',
+    when: '2026',
+    label: 'Participant',
+  },
+  {
+    event: 'United Nations Association of the USA, National Young Professionals',
+    when: '2026–present',
+    label: 'Member',
+  },
+  {
     event: 'UN Digital Cooperation Day',
     when: 'September 21, 2026',
     label: 'Attended',

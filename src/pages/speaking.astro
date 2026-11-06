@@ -3,8 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { profile } from '../data/profile';
 import { stateOfState, iyc14, participation } from '../data/speaking';
 import { url } from '../lib/url';
+import { presentations } from '../data/cv';
 ---
-<BaseLayout title="Speaking" description="Reyna Gowie's speaking and youth policy participation, including State of State 2026 and IYC14.">
+<BaseLayout title="Speaking" description="Reyna Gowie's talks, research presentations, and youth policy engagement, including State of State 2026, IYC14, and UN-related programs.">
   <div class="narrow">
     <div class="page-head">
     <h1>Speaking and participation</h1>
@@ -33,10 +34,17 @@ import { url } from '../lib/url';
       </figure>
     </section>
 
+    <section class="item" aria-labelledby="posters">
+      <h2 id="posters">Research presentations</h2>
+      <ul class="plist">
+        {presentations.map((p) => <li><span class="ptitle">{p.title}</span><span class="small muted">{p.kind}, {p.venue}, {p.when}</span></li>)}
+      </ul>
+    </section>
+
     <section class="item" aria-labelledby="part">
-      <h2 id="part">Event participation</h2>
+      <h2 id="part">Policy and global engagement</h2>
       <ul>
-        {participation.map((p) => <li><strong>{p.event}</strong>, {p.when} ({p.label.toLowerCase()})</li>)}
+        {participation.map((p) => <li><strong>{p.event}</strong>, {p.when} ({p.label.charAt(0).toLowerCase() + p.label.slice(1)})</li>)}
       </ul>
       {participation.filter((p) => p.photo).map((p) => (
         <figure class="portrait">
@@ -61,6 +69,9 @@ import { url } from '../lib/url';
   .invite h2 { font-size: var(--fs-lg); }
   .kicker { font-size: var(--fs-sm); color: var(--muted); display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
   .portrait { max-width: 22rem; }
+  .plist { list-style: none; padding: 0; }
+  .plist li { display: grid; gap: 0.15rem; padding-block: 0.6rem; border-top: 1px solid var(--border); }
+  .plist li:first-child { border-top: 0; padding-top: 0; }
   .caps { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .caps li { border: 1px solid var(--border); border-radius: var(--r-sm); padding: 0.2rem 0.7rem; }
 </style>

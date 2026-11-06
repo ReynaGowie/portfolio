@@ -1,13 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { guessWho, press } from '../data/profile';
+import { technicalProjects } from '../data/cv';
 import { url } from '../lib/url';
 ---
-<BaseLayout title="Projects" description={`Selected work by Reyna Gowie: the ${guessWho.title} course and leadership of Students Teaching Students.`}>
+<BaseLayout title="Projects" description={`Selected work by Reyna Gowie: Python and research projects, the ${guessWho.title} course, and leadership of Students Teaching Students.`}>
   <div class="narrow page-head">
     <h1>Selected work</h1>
-    <p class="lede">Some of my building happens outside software. These projects are about designing structures that give people more say in their own education.</p>
+    <p class="lede">Software, research, and course design. Each project is about how systems work for the people inside them.</p>
   </div>
+
+  <section id="technical" class="narrow feature" aria-labelledby="tech-h">
+    <p class="kicker">Software and research</p>
+    <h2 id="tech-h">Technical and research projects</h2>
+    {technicalProjects.map((p) => (
+      <article class="tp" id={p.id}>
+        <p class="kicker">{p.kind} · {p.when}</p>
+        <h3>{p.title}</h3>
+        <p>{p.summary}</p>
+        {p.link && <p class="small"><a href={p.link.url} rel="noopener">{p.link.label}</a></p>}
+      </article>
+    ))}
+  </section>
 
   <article id="guess-who" class="narrow feature">
     <p class="kicker">Course design <span class="status">In development · launching {guessWho.term}</span></p>
@@ -67,6 +81,9 @@ import { url } from '../lib/url';
   .feature h2 { font-size: var(--fs-lg); }
   .kicker { font-size: var(--fs-sm); color: var(--muted); display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
   .prose h3 { font-size: var(--fs-md); margin-top: var(--space-3); }
+  .tp { border-top: 1px solid var(--border); padding-top: var(--space-2); margin-top: var(--space-3); }
+  .tp h3 { font-size: var(--fs-md); margin-bottom: 0.5rem; }
+  .tp p:last-child { margin-bottom: 0; }
   .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--space-2); margin: var(--space-3) 0; padding-block: var(--space-2); border-block: 1px solid var(--border); }
   .facts dt { font-size: var(--fs-sm); color: var(--muted); }
   .facts dd { margin: 0; }
