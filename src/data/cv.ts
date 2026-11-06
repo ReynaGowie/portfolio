@@ -114,7 +114,14 @@ export const presentations = [
   },
 ];
 
-// Writing published elsewhere (linked, not copied).
+// Writing published elsewhere (linked, not copied). Substack posts were
+// checked 2026-11-06: only posts with no personal medical details or Auralis
+// mentions are listed.
+export const substack = {
+  name: 'Work in Mind',
+  url: 'https://reynasimone.substack.com/',
+};
+
 export const elsewhere = [
   {
     title: 'What AIxPH showed me about the people side of AI in public health',
@@ -127,5 +134,23 @@ export const elsewhere = [
     outlet: 'LinkedIn',
     when: 'September 2026',
     url: 'https://www.linkedin.com/pulse/who-gets-define-success-ai-notes-from-unga-81-reyna-simone-gowie-l7fsc/',
+  },
+  {
+    title: 'An Open Bed Isn’t Shelter',
+    outlet: 'Work in Mind (Substack)',
+    when: 'September 2026',
+    url: 'https://reynasimone.substack.com/p/an-open-bed-isnt-shelter',
+  },
+  {
+    title: 'Your Calendar Is Always the Last to Know',
+    outlet: 'Work in Mind (Substack)',
+    when: 'April 2026',
+    url: 'https://reynasimone.substack.com/p/the-earliest-sign-youre-heading-toward',
+  },
+  {
+    title: 'Welcome to the Meme-ification of Thought: Are Quick Takes Killing Depth?',
+    outlet: 'Work in Mind (Substack)',
+    when: 'April 2026',
+    url: 'https://reynasimone.substack.com/p/welcome-to-the-meme-ification-of',
   },
 ];

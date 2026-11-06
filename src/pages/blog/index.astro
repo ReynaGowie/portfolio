@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleRow from '../../components/ArticleRow.astro';
 import { getPosts } from '../../lib/posts';
-import { elsewhere } from '../../data/cv';
+import { elsewhere, substack } from '../../data/cv';
 const posts = await getPosts();
 ---
 <BaseLayout title="Blog" description="Writing by Reyna Gowie on AI, education, and who gets a say in the systems that shape people's lives.">
@@ -16,7 +16,8 @@ const posts = await getPosts();
     </div>
 
     <section class="elsewhere" aria-labelledby="elsewhere-h">
-      <h2 id="elsewhere-h">Also on LinkedIn</h2>
+      <h2 id="elsewhere-h">Writing elsewhere</h2>
+      <p class="muted">More essays on LinkedIn and on my Substack, <a href={substack.url} rel="noopener">{substack.name}</a>.</p>
       <ul>
         {elsewhere.map((a) => (
           <li>
