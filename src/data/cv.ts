@@ -95,7 +95,7 @@ export const technicalProjects = [
     kind: 'Literature review',
     when: 'July–October 2024',
     summary:
-      'A literature review on how menstrual cycle hormonal changes relate to energy, productivity, and well-being at work, connected to UN Sustainable Development Goals 3, 5, and 8. I turned the findings into a poster presented at SACNAS NDiSTEM 2024.',
+      'A literature review on how menstrual cycle hormonal changes relate to energy, productivity, and well-being at work, connected to UN Sustainable Development Goals 3, 5, and 8. I turned the findings into a poster for the SACNAS NDiSTEM 2024 conference in Phoenix and received an NIH/SACNAS NDiSTEM Travel Grant Award to present it.',
     link: null as null | { label: string; url: string },
   },
 ];
