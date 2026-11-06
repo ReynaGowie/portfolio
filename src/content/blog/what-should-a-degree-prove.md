@@ -3,7 +3,7 @@ title: What Should a Degree Prove When AI Can Do the Homework?
 description: "A perfect assignment can still leave you wondering whether the student learned anything."
 topic: AI and education
 order: 1
-status: review
+status: final
 image:
   src: /images/state-of-state-title-slide.jpg
   alt: "Title slide reading What Should a Penn State Degree Mean Now?, for State of State 2026, with Reyna Gowie's name, her role as president of Students Teaching Students, and a photo of Penn State's Old Main."

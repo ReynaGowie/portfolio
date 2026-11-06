@@ -3,7 +3,7 @@ title: Why Students Should Help Design Their Own Education
 description: Students already experience course design from the receiving end. Designing my own philosophy course showed me why that experience should count, and how much responsibility comes with it.
 topic: Education
 order: 3
-status: review
+status: final
 image:
   src: /images/students-library-table.jpg
   alt: "Students talking around a library table covered with books and a laptop while an older man stands nearby holding a book."

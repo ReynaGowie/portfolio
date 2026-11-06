@@ -3,7 +3,7 @@ title: When Should AI Ask First?
 description: "“Find me a flight” and “buy me a ticket” are different instructions."
 topic: Responsible AI
 order: 2
-status: review
+status: final
 image:
   src: /images/passport-boarding-passes-laptop.jpg
   alt: "A U.S. passport and two sample boarding passes resting on a closed silver laptop."
