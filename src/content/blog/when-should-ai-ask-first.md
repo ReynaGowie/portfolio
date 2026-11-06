@@ -19,11 +19,16 @@ sources:
     url: https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers
     date: "2026-10-21"
     claim: Planned Agent Profiles ("launching in the next month") let customers authorize each agent and either "require approval for every purchase" or allow purchases "within a spending limit they set."
+  - publisher: The Star (Deutsche Presse-Agentur)
+    title: "'Agentic commerce': What are the risks when AI buys things for you?"
+    url: https://www.thestar.com.my/tech/tech-news/2026/05/25/039agentic-commerce039-what-are-the-risks-when-ai-buys-things-for-you
+    date: "2026-05-25"
+    claim: Who is responsible when an AI agent orders the wrong product or is fooled by a fraudulent shop remains unresolved.
 ---
 
 “Find me a flight” and “buy me a ticket” are different instructions. The difference becomes expensive when an AI assistant treats them as permission to do the same thing.
 
-AI agents can take actions on our behalf, which makes the limits of their permission important. An agent’s ability to complete a task doesn’t tell us whether someone authorized it.
+AI agents can now buy things for us, and [a news report](https://www.thestar.com.my/tech/tech-news/2026/05/25/039agentic-commerce039-what-are-the-risks-when-ai-buys-things-for-you) says it’s still unclear who’s liable for their mistakes. An agent’s ability to complete a task doesn’t tell us whether someone authorized it.
 
 ## Permission needs boundaries
 

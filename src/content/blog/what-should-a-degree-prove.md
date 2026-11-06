@@ -19,6 +19,11 @@ sources:
     url: https://www.insidehighered.com/news/tech-innovation/artificial-intelligence/2026/08/28/mit-ai-report-calls-alternative-grading
     date: "2026-08-28"
     claim: An MIT committee cited "increased difficulty in assessing students' mastery and progress" and recommended changes to grading and teaching.
+  - publisher: eCampus News (Dr. John Johnston)
+    title: "Accreditation's AI reckoning: Can colleges still prove students are learning?"
+    url: https://www.ecampusnews.com/ai-in-education/2026/07/29/accreditations-ai-reckoning-can-colleges-still-prove-students-are-learning/
+    date: "2026-07-27 (updated 2026-07-29)"
+    claim: Recommends making student thinking visible through drafts, decision logs, source evaluations, oral defenses, and disclosed AI use.
 ---
 
 A perfect assignment can still leave you wondering whether the student learned anything. AI makes that question harder to avoid when polished work arrives without much evidence of the thinking behind it.
@@ -33,7 +38,7 @@ I think the committee is right to rethink what grades are for. If students can c
 
 An essay can still reveal learning. A conversation about its argument or an explanation of revisions could help an instructor see how well the student understands what they submitted.
 
-Universities already ask students to show their work. AI gives them a reason to be more specific about what that means and whether the assignment makes that thinking visible.
+Universities already ask students to show their work. [Writing in eCampus News](https://www.ecampusnews.com/ai-in-education/2026/07/29/accreditations-ai-reckoning-can-colleges-still-prove-students-are-learning/), John Johnston suggests decision logs and oral defenses. AI gives schools a reason to make that thinking visible.
 
 ## What I want a degree to demonstrate
 
