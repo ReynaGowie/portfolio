@@ -11,29 +11,28 @@ const posts = await getPosts();
       <h1>Writing</h1>
       <p class="lede">Short essays on AI, education, and who gets a say in the systems that shape our lives.</p>
     </div>
-    <div class="list">
+    <div class="panel">
       {posts.map((post) => <ArticleRow post={post} headingLevel="h2" showImage />)}
     </div>
 
     <section class="elsewhere" aria-labelledby="elsewhere-h">
       <h2 id="elsewhere-h">Writing elsewhere</h2>
       <p class="muted">More essays on LinkedIn and on my Substack, <a href={substack.url} rel="noopener">{substack.name}</a>.</p>
-      <ul>
+      <div class="panel">
         {elsewhere.map((a) => (
-          <li>
-            <a href={a.url} rel="noopener">{a.title}</a>
-            <span class="small muted">{a.outlet}, {a.when}</span>
-          </li>
+          <div class="card card-link ext">
+            <a class="stretch" href={a.url} rel="noopener">{a.title} <span aria-hidden="true">↗</span></a>
+            <span class="small muted">{a.outlet} · {a.when}</span>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   </div>
 </BaseLayout>
 <style>
-  .elsewhere { margin-top: var(--space-5); border-top: 1px solid var(--text); padding-top: var(--space-2); }
+  .elsewhere { margin-top: var(--space-5); }
   .elsewhere h2 { font-size: var(--fs-lg); }
-  .elsewhere ul { list-style: none; padding: 0; margin: 0; }
-  .elsewhere li { display: grid; gap: 0.15rem; padding-block: 0.75rem; border-bottom: 1px solid var(--border); }
-  .elsewhere a { font-size: var(--fs-md); text-decoration: none; color: var(--text); }
-  .elsewhere a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
+  .ext { display: grid; gap: 0.2rem; }
+  .ext a { font-size: var(--fs-md); text-decoration: none; color: var(--text); font-family: var(--serif); }
+  .ext:hover a { color: var(--accent); }
 </style>

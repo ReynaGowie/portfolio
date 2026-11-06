@@ -1,0 +1,21 @@
+---
+import { url } from '../lib/url';
+export interface StripPhoto { src: string; alt: string; pos?: string }
+interface Props { photos: StripPhoto[] }
+const { photos } = Astro.props;
+const tilts = ['-6deg', '3deg', '-2.5deg', '5deg', '-4deg'];
+const drops = ['0.6rem', '0', '1rem', '0.2rem', '0.8rem'];
+---
+<ul class="strip" role="list">
+  {photos.map((p, i) => (
+    <li class="tilt" style={`--tilt:${tilts[i % tilts.length]};--drop:${drops[i % drops.length]}`}>
+      <img src={url(p.src)} alt={p.alt} width="600" height="800" loading="eager" style={p.pos ? `object-position:${p.pos}` : undefined} />
+    </li>
+  ))}
+</ul>
+<style>
+  .strip { list-style: none; margin: 0 auto var(--space-4); padding: 0; display: flex; justify-content: center; align-items: flex-start; }
+  .strip li { width: clamp(5.5rem, 22vw, 10.5rem); margin-inline: clamp(-0.9rem, -1.2vw, -0.4rem); margin-top: var(--drop); position: relative; }
+  .strip li:hover { z-index: 2; }
+  .strip img { aspect-ratio: 3 / 4; object-fit: cover; }
+</style>

@@ -1,58 +1,97 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Headshot from '../components/Headshot.astro';
+import PhotoStrip from '../components/PhotoStrip.astro';
+import SkillsPile from '../components/SkillsPile.astro';
 import { profile, guessWho } from '../data/profile';
-import { experience, skills, certifications, committee } from '../data/cv';
+import { experience, certifications, committee } from '../data/cv';
+import { stateOfState, iyc14, participation } from '../data/speaking';
 import { url } from '../lib/url';
+
+const dcDay = participation.find((p) => p.photo);
+const photos = [
+  ...(profile.headshot ? [{ src: profile.headshot.src, alt: profile.headshot.alt, pos: '50% 20%' }] : []),
+  { src: stateOfState.photo.src, alt: stateOfState.photo.alt, pos: '42% 30%' },
+  { src: iyc14.photo.src, alt: iyc14.photo.alt, pos: '50% 30%' },
+  ...(dcDay?.photo ? [{ src: dcDay.photo.src, alt: dcDay.photo.alt, pos: '50% 15%' }] : []),
+];
+const education = [
+  { title: profile.school, detail: `${profile.major} · expected ${profile.expectedGraduation}` },
+  { title: profile.scholar, detail: 'Penn State Millennium Scholars Program' },
+  { title: 'Smeal College Business Fundamentals Certificate', detail: 'In progress' },
+];
+const leadership = [
+  { title: 'President, Students Teaching Students', detail: 'Penn State · 2026–present' },
+  { title: `Creator, ${guessWho.code}`, detail: `${guessWho.title} · ${guessWho.term}` },
+  { title: `${committee.role}, ${committee.name}`, detail: `${committee.org} · ${committee.when}` },
+];
+const certShown = certifications.slice(0, 3);
+const certMore = certifications.slice(3);
 ---
 <BaseLayout title="About" description={`About ${profile.name}: Enterprise Technology Integration at Penn State, AI Engineer Co-Op at IBM, and president of Students Teaching Students.`}>
-  <div class="wrap about">
-    <div class="text">
-      <h1>About me</h1>
+  <div class="narrow">
+    <PhotoStrip photos={photos} />
+
+    <div class="card intro">
+      <h1>Hi, I’m Reyna</h1>
       <div class="prose">
         <p>I’m interested in what happens between a system working as designed and actually working for someone.</p>
         <p>At Penn State, I study Enterprise Technology Integration: how organizations choose, build, and run technology systems. I’m a Millennium Scholar and am also earning the Smeal College Business Fundamentals Certificate. Alongside school, I work as an AI Engineer Co-Op at IBM, applying AI to business problems.</p>
         <p>Some of my building happens outside software. As president of Students Teaching Students, I help undergraduates turn their ideas into real, for-credit courses. I’ve also designed my own: <em>{guessWho.title}</em>, a philosophy seminar launching in {guessWho.term}.</p>
         <p>Through speaking and youth policy participation, I explore who shapes technology and what education should prepare us to do.</p>
         <p>Across these interests, I want to build systems people can question, influence, and use on their own terms.</p>
-
-        <h2>Education and roles</h2>
-        <ul>
-          <li><strong>{profile.school}</strong>, {profile.major}, expected {profile.expectedGraduation}</li>
-          <li>{profile.scholar}</li>
-          <li>{profile.certificate}</li>
-          <li>President, Students Teaching Students</li>
-          <li>Creator, {guessWho.code}, <em>{guessWho.title}</em> ({guessWho.term})</li>
-          <li>{committee.role}, {committee.name}, {committee.org} ({committee.when})</li>
-        </ul>
-
-        <h2>Experience</h2>
-        <ul>
-          {experience.map((e) => <li><strong>{e.role}</strong>, {e.org} ({e.when}). {e.note}</li>)}
-        </ul>
-
-        <h2>Skills</h2>
-        <dl class="skills">
-          {skills.map((g) => <div><dt>{g.group}</dt><dd>{g.items.join(', ')}</dd></div>)}
-        </dl>
-
-        <h2>Certifications</h2>
-        <ul>
-          {certifications.map((c) => <li>{c.name}, {c.issuer} ({c.when})</li>)}
-        </ul>
-        <p><a href={url('/projects/')}>See selected work</a> or <a href={url('/speaking/')}>read about my speaking</a>.</p>
       </div>
     </div>
-    <aside class="photo"><Headshot size="md" /></aside>
+
+    <section class="block"><SkillsPile /></section>
+
+    <section class="block" aria-labelledby="exp-h">
+      <h2 class="label" id="exp-h">Experience</h2>
+      <div class="panel">
+        {experience.map((e) => (
+          <div class="card row"><p class="t">{e.role}</p><p class="d">{e.org} · {e.when}</p><p class="n">{e.note}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="lead-h">
+      <h2 class="label" id="lead-h">Leadership and service</h2>
+      <div class="panel">
+        {leadership.map((l) => <div class="card row"><p class="t">{l.title}</p><p class="d">{l.detail}</p></div>)}
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="edu-h">
+      <h2 class="label" id="edu-h">Education</h2>
+      <div class="panel">
+        {education.map((e) => <div class="card row"><p class="t">{e.title}</p><p class="d">{e.detail}</p></div>)}
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="cert-h">
+      <h2 class="label" id="cert-h">Certifications</h2>
+      <div class="panel">
+        {certShown.map((c) => <div class="card row"><p class="t">{c.name}</p><p class="d">{c.issuer} · {c.when}</p></div>)}
+        {certMore.length > 0 && (
+          <details class="more">
+            <summary><span class="more-label">Show {certMore.length} more</span><span class="less">Show less</span></summary>
+            <div>{certMore.map((c) => <div class="card row"><p class="t">{c.name}</p><p class="d">{c.issuer} · {c.when}</p></div>)}</div>
+          </details>
+        )}
+      </div>
+    </section>
+
+    <div class="actions next">
+      <a class="btn btn-primary" href={url('/projects/')}>See my projects</a>
+      <a class="btn btn-secondary" href={url('/speaking/')}>Speaking</a>
+    </div>
   </div>
 </BaseLayout>
 <style>
-  .about { display: grid; gap: var(--space-4); }
-  @media (min-width: 56rem) { .about { grid-template-columns: 1fr 17rem; gap: var(--space-5); } .photo { order: 2; padding-top: var(--space-4); } }
-  h1 { max-width: 36rem; }
-  .skills { margin: 0 0 var(--space-2); }
-  .skills div { padding-block: 0.6rem; border-top: 1px solid var(--border); }
-  .skills div:last-child { border-bottom: 1px solid var(--border); }
-  .skills dt { font-size: var(--fs-sm); color: var(--muted); }
-  .skills dd { margin: 0; }
+  .intro h1 { margin-bottom: var(--space-2); }
+  .intro .prose { font-size: var(--fs-base); }
+  .block { margin-top: var(--space-4); }
+  .row .t { font-weight: 500; margin: 0; }
+  .row .d { font-size: var(--fs-sm); color: var(--muted); margin: 0.15rem 0 0; }
+  .row .n { font-size: var(--fs-sm); margin: 0.5rem 0 0; }
+  .next { justify-content: center; margin-top: var(--space-5); }
 </style>

@@ -5,8 +5,8 @@ const current = Astro.url.pathname;
 const isCurrent = (href: string) => current.startsWith(url(href));
 ---
 <header class="site-header">
-  <div class="wrap bar">
-    <a class="brand" href={url('/')}>{profile.name}</a>
+  <div class="pill">
+    <a class="brand" href={url('/')} aria-current={current === url('/') ? 'page' : undefined}>{profile.name}</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>
       <span class="menu-label">Menu</span>
     </button>
@@ -40,24 +40,33 @@ const isCurrent = (href: string) => current.startsWith(url(href));
 </script>
 
 <style>
-  .site-header { border-bottom: 1px solid var(--border); }
-  .bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; padding-block: 1.1rem; }
-  .brand { font-family: var(--serif); font-size: var(--fs-md); color: var(--text); text-decoration: none; }
-  .brand:hover { color: var(--accent); }
-  nav ul { list-style: none; display: flex; gap: var(--space-3); margin: 0; padding: 0; }
-  nav a { font-size: var(--fs-sm); color: var(--muted); text-decoration: none; padding-block: 0.25rem; }
-  nav a:hover { color: var(--text); }
-  nav a[aria-current='page'] { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.45em; text-decoration-thickness: 2px; }
+  .site-header {
+    position: fixed; top: 0.9rem; left: 0; right: 0; z-index: 50;
+    display: flex; justify-content: center; padding-inline: 1rem; pointer-events: none;
+  }
+  .pill {
+    pointer-events: auto; display: flex; align-items: center; gap: 0.15rem; flex-wrap: wrap;
+    padding: 0.3rem; border-radius: 999px; background: rgb(255 255 255 / 0.92);
+    border: 1px solid var(--border); box-shadow: var(--shadow);
+  }
+  .brand, nav a {
+    display: block; padding: 0.4rem 0.85rem; border-radius: 999px; font-size: var(--fs-sm);
+    color: var(--muted); text-decoration: none; white-space: nowrap; transition: background-color 150ms ease, color 150ms ease;
+  }
+  .brand { font-family: var(--serif); font-style: italic; color: var(--text); }
+  .brand:hover, nav a:hover { color: var(--text); background: var(--panel); }
+  .brand[aria-current='page'], nav a[aria-current='page'] { background: var(--accent); color: #fff; }
+  nav ul { list-style: none; display: flex; gap: 0.1rem; margin: 0; padding: 0; }
   .menu-toggle {
-    font: inherit; font-size: var(--fs-sm); font-weight: 500; background: transparent; color: var(--text);
-    border: 1px solid var(--border); border-radius: var(--r-sm); padding: 0.35rem 0.8rem; cursor: pointer;
+    font: inherit; font-size: var(--fs-sm); font-weight: 500; background: var(--panel); color: var(--text);
+    border: 0; border-radius: 999px; padding: 0.4rem 0.95rem; cursor: pointer;
   }
   @media (min-width: 48rem) { .menu-toggle { display: none; } }
   @media (max-width: 47.99rem) {
+    .pill { width: 100%; max-width: 30rem; justify-content: space-between; border-radius: 22px; background: #fff; }
     :global(html.js) nav { display: none; width: 100%; }
     :global(html.js) nav[data-open='true'] { display: block; }
-    nav ul { flex-direction: column; gap: 0; }
-    nav a { display: block; padding: 0.75rem 0; font-size: var(--fs-base); border-top: 1px solid var(--border); }
-    nav a[aria-current='page'] { text-underline-offset: 0.3em; }
+    nav ul { flex-direction: column; padding: 0.25rem 0 0.35rem; }
+    nav a { padding: 0.65rem 0.85rem; font-size: var(--fs-base); border-radius: 14px; }
   }
 </style>

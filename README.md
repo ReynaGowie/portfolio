@@ -27,6 +27,7 @@ npm run check:final  # fails unless every assignment requirement passes
 | Blog posts | `src/content/blog/*.md` |
 | Page text | `src/pages/*.astro` |
 | Colors, fonts, spacing, corner sizes | `src/styles/global.css` (the design rules are listed at the top) |
+| Draggable skills box, photo strip | `src/components/SkillsPile.astro`, `src/components/PhotoStrip.astro` |
 | Images | `public/images/` |
 
 ### Add your headshot
@@ -99,7 +100,7 @@ BASE_PATH=/portfolio npm run preview   # then open http://localhost:4321/portfol
 ## What's in the project
 
 ```
-src/components   Header, Footer, ArticleRow, ImageCredit, Headshot
+src/components   Header, Footer, ArticleRow, ImageCredit, Headshot, PhotoStrip, SkillsPile
 src/layouts      BaseLayout (SEO, nav), ArticleLayout
 src/pages        index, about, projects, speaking, contact, 404, blog/
 src/content/blog the three posts (Markdown)

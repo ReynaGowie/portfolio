@@ -1,0 +1,118 @@
+---
+import { skills } from '../data/cv';
+const all = skills.flatMap((g) => g.items);
+---
+<div class="pile-block">
+  <div class="pile-head">
+    <p class="label">Skills and tools <span class="hint" data-hint hidden>· drag them around</span></p>
+    <button class="reset" type="button" data-reset hidden>Reset</button>
+  </div>
+  <!-- Decorative toy; the same skills are listed for screen readers below and on the page. -->
+  <div class="pile panel" data-pile aria-hidden="true">
+    {all.map((s) => <span class="chip pchip">{s}</span>)}
+  </div>
+  <ul class="sr-only">{all.map((s) => <li>{s}</li>)}</ul>
+</div>
+
+<script>
+  import Matter from 'matter-js';
+
+  const pile = document.querySelector<HTMLElement>('[data-pile]');
+  const resetBtn = document.querySelector<HTMLButtonElement>('[data-reset]');
+  const hint = document.querySelector<HTMLElement>('[data-hint]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (pile && resetBtn && !reduce) {
+    const { Engine, Runner, Bodies, Body, Composite, Mouse, MouseConstraint, Events } = Matter;
+    const chips = Array.from(pile.querySelectorAll<HTMLElement>('.pchip'));
+    let engine: Matter.Engine | null = null;
+    let runner: Matter.Runner | null = null;
+    let bodies: Matter.Body[] = [];
+    let sizes: { w: number; h: number }[] = [];
+
+    const drop = (W: number) => {
+      bodies.forEach((b, i) => {
+        const { w } = sizes[i]!;
+        Body.setPosition(b, { x: w / 2 + Math.random() * Math.max(1, W - w), y: -40 - i * 28 });
+        Body.setVelocity(b, { x: 0, y: 0 });
+        Body.setAngularVelocity(b, 0);
+        Body.setAngle(b, (Math.random() - 0.5) * 0.6);
+      });
+    };
+
+    const start = () => {
+      pile.classList.add('physics');
+      const W = pile.clientWidth;
+      const H = pile.clientHeight;
+      sizes = chips.map((c) => ({ w: c.offsetWidth, h: c.offsetHeight }));
+      engine = Engine.create();
+      engine.gravity.y = 1;
+      const t = 60;
+      const walls = [
+        Bodies.rectangle(W / 2, H + t / 2, W * 2, t, { isStatic: true }),
+        Bodies.rectangle(-t / 2, H / 2 - 400, t, H + 800, { isStatic: true }),
+        Bodies.rectangle(W + t / 2, H / 2 - 400, t, H + 800, { isStatic: true }),
+      ];
+      bodies = chips.map((_, i) => {
+        const { w, h } = sizes[i]!;
+        return Bodies.rectangle(0, 0, w, h, { chamfer: { radius: h / 2 }, restitution: 0.25, friction: 0.4, frictionAir: 0.02 });
+      });
+      drop(W);
+      const mouse = Mouse.create(pile);
+      // Let the page keep scrolling with the wheel over the box.
+      const m = mouse as unknown as { mousewheel: EventListener };
+      pile.removeEventListener('wheel', m.mousewheel);
+      pile.removeEventListener('mousewheel', m.mousewheel);
+      pile.removeEventListener('DOMMouseScroll', m.mousewheel);
+      const grab = MouseConstraint.create(engine, { mouse, constraint: { stiffness: 0.2, render: { visible: false } } as Matter.IConstraintDefinition });
+      Composite.add(engine.world, [...walls, ...bodies, grab]);
+      Events.on(engine, 'afterUpdate', () => {
+        bodies.forEach((b, i) => {
+          const { w, h } = sizes[i]!;
+          chips[i]!.style.transform = `translate(${b.position.x - w / 2}px, ${b.position.y - h / 2}px) rotate(${b.angle}rad)`;
+        });
+      });
+      runner = Runner.create();
+      Runner.run(runner, engine);
+      resetBtn.hidden = false;
+      if (hint) hint.hidden = false;
+      resetBtn.addEventListener('click', () => drop(pile.clientWidth));
+    };
+
+    // Chips fall in when the box scrolls into view.
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { io.disconnect(); start(); }
+    }, { threshold: 0.35 });
+    io.observe(pile);
+
+    // Rebuild on width changes so the walls match the box.
+    let lastW = pile.clientWidth;
+    let timer: number | undefined;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        if (!engine || pile.clientWidth === lastW) return;
+        lastW = pile.clientWidth;
+        if (runner) Runner.stop(runner);
+        Composite.clear(engine.world, false);
+        Engine.clear(engine);
+        engine = null;
+        start();
+      }, 200);
+    });
+  }
+</script>
+
+<style>
+  .pile-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .hint { color: var(--muted); font-weight: 400; }
+  .reset { font: inherit; font-size: var(--fs-sm); background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem 0.8rem; cursor: pointer; color: var(--muted); }
+  .reset:hover { color: var(--accent); }
+  .pile { display: flex; flex-wrap: wrap; gap: 0.5rem; align-content: flex-start; }
+  .pile.panel > * + * { margin-top: 0; }
+  .pile.physics { position: relative; height: 18rem; overflow: hidden; cursor: grab; touch-action: pan-y; }
+  .pile.physics:active { cursor: grabbing; }
+  .pile.physics .pchip { position: absolute; top: 0; left: 0; margin: 0; white-space: nowrap; user-select: none; will-change: transform; }
+  .pchip:nth-child(3n) { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+  .pchip:nth-child(5n) { background: var(--accent); border-color: transparent; color: #fff; }
+</style>

@@ -10,20 +10,22 @@ import { url } from '../lib/url';
     <p class="lede">Software, research, and course design. Each project is about how systems work for the people inside them.</p>
   </div>
 
-  <section id="technical" class="narrow feature" aria-labelledby="tech-h">
-    <p class="kicker">Software and research</p>
-    <h2 id="tech-h">Technical and research projects</h2>
+  <section id="technical" class="narrow block" aria-labelledby="tech-h">
+    <h2 id="tech-h" class="label">Technical and research projects</h2>
+    <div class="panel">
     {technicalProjects.map((p) => (
-      <article class="tp" id={p.id}>
+      <article class="card tp" id={p.id}>
         <p class="kicker">{p.kind} · {p.when}</p>
         <h3>{p.title}</h3>
         <p>{p.summary}</p>
-        {p.link && <p class="small"><a href={p.link.url} rel="noopener">{p.link.label}</a></p>}
+        {p.link && <p class="small"><a class="chip linkchip" href={p.link.url} rel="noopener">{p.link.label} <span aria-hidden="true">↗</span></a></p>}
       </article>
     ))}
+    </div>
   </section>
 
-  <article id="guess-who" class="narrow feature">
+  <h2 class="narrow label block">Course design and leadership</h2>
+  <article id="guess-who" class="narrow feature card">
     <p class="kicker">Course design <span class="status">In development · launching {guessWho.term}</span></p>
     <h2><em>{guessWho.title}</em></h2>
     <dl class="facts">
@@ -68,7 +70,7 @@ import { url } from '../lib/url';
     </div>
   </article>
 
-  <article id="sts" class="narrow feature">
+  <article id="sts" class="narrow feature card">
     <p class="kicker">Student leadership <span class="status">Current</span></p>
     <h2>Students Teaching Students</h2>
     <div class="prose">
@@ -77,14 +79,18 @@ import { url } from '../lib/url';
   </article>
 </BaseLayout>
 <style>
-  .feature { margin-top: var(--space-5); border-top: 1px solid var(--text); padding-top: var(--space-3); }
+  .block { margin-top: var(--space-4); }
+  .label.block { margin-bottom: 0.6rem; }
+  .feature { margin-top: var(--space-2); }
   .feature h2 { font-size: var(--fs-lg); }
   .kicker { font-size: var(--fs-sm); color: var(--muted); display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
   .prose h3 { font-size: var(--fs-md); margin-top: var(--space-3); }
-  .tp { border-top: 1px solid var(--border); padding-top: var(--space-2); margin-top: var(--space-3); }
   .tp h3 { font-size: var(--fs-md); margin-bottom: 0.5rem; }
-  .tp p:last-child { margin-bottom: 0; }
-  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--space-2); margin: var(--space-3) 0; padding-block: var(--space-2); border-block: 1px solid var(--border); }
+  .tp p { margin-bottom: 0.6rem; }
+  .linkchip { text-decoration: none; color: var(--accent); }
+  .linkchip:hover { box-shadow: var(--shadow); }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--space-2); margin: var(--space-3) 0; padding: var(--space-2); background: var(--panel); border-radius: var(--r); }
   .facts dt { font-size: var(--fs-sm); color: var(--muted); }
   .facts dd { margin: 0; }
+  .feature figure img { box-shadow: none; border: 1px solid var(--border); }
 </style>

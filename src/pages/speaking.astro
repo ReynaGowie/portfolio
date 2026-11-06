@@ -12,49 +12,49 @@ import { presentations } from '../data/cv';
     <p class="lede">Through speaking and youth policy participation, I explore who shapes technology and what education should prepare us to do.</p>
     </div>
 
-    <section class="item" aria-labelledby="sos">
+    <section class="item card" aria-labelledby="sos">
       <p class="kicker">{stateOfState.event} · {stateOfState.host} <span class="status">{stateOfState.delivered ? stateOfState.date : `Scheduled · ${stateOfState.date}`}</span></p>
       <h2 id="sos">{stateOfState.title}</h2>
       <p>{stateOfState.question}</p>
       <p>My answer centers on five capabilities a degree should signal:</p>
       <ul class="caps">{stateOfState.capabilities.map((c) => <li>{c}</li>)}</ul>
-      <figure>
+      <figure class="tilt photo" style="--tilt:-1.5deg">
         <img src={url(stateOfState.photo.src)} alt={stateOfState.photo.alt} width="1200" height="800" loading="lazy" />
         <figcaption>{stateOfState.photo.caption}{stateOfState.photo.credit && <> Photo: {stateOfState.photo.credit}.</>}</figcaption>
       </figure>
     </section>
 
-    <section class="item" aria-labelledby="iyc">
+    <section class="item card" aria-labelledby="iyc">
       <p class="kicker">{iyc14.place} · {iyc14.when} <span class="status">{iyc14.role}</span></p>
       <h2 id="iyc">{iyc14.event}</h2>
       <p>I took part as a delegate. {iyc14.statement}</p>
-      <figure>
+      <figure class="tilt photo" style="--tilt:1.5deg">
         <img src={url(iyc14.photo.src)} alt={iyc14.photo.alt} width="1080" height="720" loading="lazy" />
         <figcaption>{iyc14.photo.caption}{iyc14.photo.credit && <> Image: {iyc14.photo.credit}.</>}</figcaption>
       </figure>
     </section>
 
-    <section class="item" aria-labelledby="posters">
-      <h2 id="posters">Research presentations</h2>
-      <ul class="plist">
-        {presentations.map((p) => <li><span class="ptitle">{p.title}</span><span class="small muted">{p.kind}, {p.venue}, {p.when}</span></li>)}
-      </ul>
+    <section class="item plain" aria-labelledby="posters">
+      <h2 id="posters" class="label">Research presentations</h2>
+      <div class="panel">
+        {presentations.map((p) => <div class="card prow"><p class="ptitle">{p.title}</p><p class="small muted">{p.kind} · {p.venue} · {p.when}</p></div>)}
+      </div>
     </section>
 
-    <section class="item" aria-labelledby="part">
-      <h2 id="part">Policy and global engagement</h2>
-      <ul>
-        {participation.map((p) => <li><strong>{p.event}</strong>, {p.when} ({p.label.charAt(0).toLowerCase() + p.label.slice(1)})</li>)}
-      </ul>
+    <section class="item plain" aria-labelledby="part">
+      <h2 id="part" class="label">Policy and global engagement</h2>
+      <div class="panel">
+        {participation.map((p) => <div class="card prow"><p class="ptitle">{p.event}</p><p class="small muted">{p.label} · {p.when}</p></div>)}
+      </div>
       {participation.filter((p) => p.photo).map((p) => (
-        <figure class="portrait">
+        <figure class="portrait tilt photo" style="--tilt:-2deg">
           <img src={url(p.photo!.src)} alt={p.photo!.alt} width="800" height="1000" loading="lazy" />
           <figcaption>{p.photo!.caption}</figcaption>
         </figure>
       ))}
     </section>
 
-    <section class="item invite">
+    <section class="item card invite">
       <h2>Invite me to speak</h2>
       <p>For speaking or panel inquiries, the best way to reach me is LinkedIn.</p>
       <p><a class="btn btn-primary" href={profile.linkedin} rel="noopener">Message me on LinkedIn</a></p>
@@ -62,16 +62,19 @@ import { presentations } from '../data/cv';
   </div>
 </BaseLayout>
 <style>
-  .item { border-top: 1px solid var(--border); padding-block: var(--space-3); }
+  .item { margin-top: var(--space-3); }
   .item h2 { font-size: var(--fs-md); }
-  .item p:last-child, .item ul:last-child { margin-bottom: 0; }
-  .invite { border-top: 1px solid var(--text); margin-top: var(--space-4); }
-  .invite h2 { font-size: var(--fs-lg); }
+  .item.plain { margin-top: var(--space-4); }
+  .item > p:last-child, .item ul:last-child { margin-bottom: 0; }
+  .invite { text-align: center; margin-top: var(--space-5); padding-block: var(--space-4); }
+  .invite h2 { font-size: var(--fs-lg); font-style: italic; }
   .kicker { font-size: var(--fs-sm); color: var(--muted); display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
-  .portrait { max-width: 22rem; }
-  .plist { list-style: none; padding: 0; }
-  .plist li { display: grid; gap: 0.15rem; padding-block: 0.6rem; border-top: 1px solid var(--border); }
-  .plist li:first-child { border-top: 0; padding-top: 0; }
+  .photo { margin: var(--space-3) 0 0; }
+  .photo img { box-shadow: none; }
+  .photo figcaption { padding: 0.25rem 0.5rem 0.4rem; margin-top: 0.5rem; }
+  .portrait { max-width: 18rem; margin: var(--space-3) auto 0; }
+  .prow .ptitle { font-weight: 500; margin: 0; }
+  .prow .small { margin: 0.15rem 0 0; }
   .caps { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .caps li { border: 1px solid var(--border); border-radius: var(--r-sm); padding: 0.2rem 0.7rem; }
+  .caps li { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 0.25rem 0.85rem; }
 </style>

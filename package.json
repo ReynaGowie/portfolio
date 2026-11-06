@@ -15,10 +15,12 @@
     "check:final": "node scripts/check-content.mjs --final"
   },
   "dependencies": {
-    "astro": "^7.4.5"
+    "astro": "^7.4.5",
+    "matter-js": "^0.20.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
+    "@types/matter-js": "^0.20.2",
     "@types/node": "^22.20.5",
     "typescript": "^6.0.3",
     "yaml": "^2.9.1"
