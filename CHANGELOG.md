@@ -11,6 +11,7 @@ Repository: https://github.com/ReynaGowie/portfolio
 ## 2026-11-06
 
 ### Search, verification, and contact
+- **Structured data** on the homepage (schema.org Person): name and other names, roles, organizations, the Onward State article, and links to LinkedIn, Substack, Instagram, GitHub, Gumroad, and Linktree, so search engines can tell these profiles belong to one person. (`f4f2fe2`)
 - **Google Search Console verification** added two ways: the HTML file (`public/google568c1edccce41133.html`) and the `google-site-verification` meta tag on every page.
 - **Search indexing turned on.** The "noindex" tag is removed from every page, and a sitemap is published at `/portfolio/sitemap-index.xml` (all 9 pages, 404 excluded). (`688b275`)
 - **Contact form** on the Contact page, delivered by Web3Forms. Fields: name, email, topic, message; hidden spam trap; inline success/error message. One test message sent from the live site and confirmed delivered. (`2f30a13`, `5a108bd`)
