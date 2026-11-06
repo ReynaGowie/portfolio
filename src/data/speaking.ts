@@ -37,5 +37,10 @@ export const participation = [
     event: 'UN Digital Cooperation Day',
     when: 'September 21, 2026',
     label: 'Attended',
+    photo: {
+      src: '/images/un-digital-cooperation-day.jpg',
+      alt: 'Reyna Gowie wearing an event badge, standing in front of a United Nations Digital Cooperation Day backdrop.',
+      caption: 'At UN Digital Cooperation Day in New York, September 21.',
+    },
   },
 ];

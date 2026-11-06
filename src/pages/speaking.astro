@@ -38,6 +38,12 @@ import { url } from '../lib/url';
       <ul>
         {participation.map((p) => <li><strong>{p.event}</strong>, {p.when} ({p.label.toLowerCase()})</li>)}
       </ul>
+      {participation.filter((p) => p.photo).map((p) => (
+        <figure class="portrait">
+          <img src={url(p.photo!.src)} alt={p.photo!.alt} width="800" height="1000" loading="lazy" />
+          <figcaption>{p.photo!.caption}</figcaption>
+        </figure>
+      ))}
     </section>
 
     <section class="item invite">
@@ -54,6 +60,7 @@ import { url } from '../lib/url';
   .invite { border-top: 1px solid var(--text); margin-top: var(--space-4); }
   .invite h2 { font-size: var(--fs-lg); }
   .kicker { font-size: var(--fs-sm); color: var(--muted); display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+  .portrait { max-width: 22rem; }
   .caps { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .caps li { border: 1px solid var(--border); border-radius: var(--r-sm); padding: 0.2rem 0.7rem; }
 </style>

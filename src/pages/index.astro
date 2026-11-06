@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Headshot from '../components/Headshot.astro';
 import ArticleRow from '../components/ArticleRow.astro';
-import { profile, guessWho } from '../data/profile';
+import { profile, guessWho, press } from '../data/profile';
 import { stateOfState } from '../data/speaking';
 import { getPosts } from '../lib/posts';
 import { url } from '../lib/url';
@@ -33,6 +33,7 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
         <p class="meta">Course design <span class="status">Launching {guessWho.term}</span></p>
         <h3><a href={url('/projects/#guess-who')}><em>{guessWho.title}</em></a></h3>
         <p class="muted">A philosophy seminar I designed as an undergraduate, with privacy and consent built into how students represent each other.</p>
+        <p class="press">Covered by <a href={press[0]!.url} rel="noopener">{press[0]!.outlet}</a>, {press[0]!.date}</p>
         <img src={url('/images/guess-who-structure.svg')} alt="" width="1200" height="675" loading="lazy" />
       </article>
       <div class="side">
@@ -85,6 +86,7 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
   .work h3 a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
   .meta { font-size: var(--fs-sm); color: var(--muted); display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
   .lead h3 { font-size: var(--fs-lg); }
+  .press { font-size: var(--fs-sm); color: var(--muted); }
   .lead img { margin-top: var(--space-3); border: 1px solid var(--border); border-radius: var(--r); background: #fff; }
   .side { display: grid; gap: 0; align-content: start; }
   .side article { border-top: 1px solid var(--border); padding-block: var(--space-3); }

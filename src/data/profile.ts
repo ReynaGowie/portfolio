@@ -32,6 +32,16 @@ export const guessWho = {
   advisor: 'Professor John Christman',
 };
 
+// Press coverage. Link only; don't copy the article text onto the site.
+export const press = [
+  {
+    outlet: 'Onward State',
+    title: 'Penn State Student Reyna Gowie Turns Classic Board Game Into Philosophy Course Through Students Teaching Students',
+    url: 'https://onwardstate.com/2026/10/16/penn-state-student-turns-classic-board-game-into-philosophy-course-through-students-teaching-students/',
+    date: 'October 16, 2026',
+  },
+];
+
 export const nav = [
   { href: '/about/', label: 'About' },
   { href: '/projects/', label: 'Projects' },

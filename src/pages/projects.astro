@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { guessWho } from '../data/profile';
+import { guessWho, press } from '../data/profile';
 import { url } from '../lib/url';
 ---
 <BaseLayout title="Projects" description={`Selected work by Reyna Gowie: the ${guessWho.title} course and leadership of Students Teaching Students.`}>
@@ -46,6 +46,11 @@ import { url } from '../lib/url';
 
       <h3>Status</h3>
       <p>Listed for {guessWho.term}. The course hasn’t run yet. I wrote more about the design choices in <a href={url('/blog/why-students-should-help-design-their-own-education/')}>Why Students Should Help Design Their Own Education</a>.</p>
+
+      <h3>In the press</h3>
+      <ul>
+        {press.map((p) => <li><a href={p.url} rel="noopener">{p.title}</a>, {p.outlet}, {p.date}</li>)}
+      </ul>
     </div>
   </article>
 
