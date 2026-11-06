@@ -35,9 +35,10 @@
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
-  --space-4: 2.5rem;
-  --space-5: 4rem;
-  --space-6: 6rem;
+  /* Larger gaps shrink on small screens so phones don't get long blank stretches */
+  --space-4: clamp(1.75rem, 3.5vw, 2.5rem);
+  --space-5: clamp(2.25rem, 5vw, 4rem);
+  --space-6: clamp(2.75rem, 6vw, 5rem);
 
   --r-sm: 10px;
   --r: 16px;
@@ -97,7 +98,7 @@ a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
 
 .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
 .narrow { width: min(100% - 2rem, 46rem); margin-inline: auto; }
-main { display: block; padding-block: 6rem var(--space-6); }
+main { display: block; padding-block: clamp(5rem, 8vw, 6rem) var(--space-3); }
 main:focus { outline: none; }
 
 .eyebrow { font-size: var(--fs-sm); color: var(--muted); font-weight: 500; margin-bottom: var(--space-1); }
@@ -143,7 +144,7 @@ main:focus { outline: none; }
 .tilt:hover { transform: rotate(0deg) translateY(-4px) scale(1.02); box-shadow: var(--shadow-lift); }
 
 /* Section heading */
-.section { padding-top: var(--space-6); }
+.section { padding-top: var(--space-5); }
 .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-3); }
 .section-head h2 { margin: 0; }
 .section-head a { font-size: var(--fs-sm); }
@@ -192,6 +193,7 @@ details.more > div > * + * { margin-top: 0.6rem; }
   margin-bottom: var(--space-4);
 }
 .hero-panel > :last-child { margin-bottom: 0; }
+.hero-panel:last-child { margin-bottom: 0; }
 .pat-grid {
   background-image:
     linear-gradient(rgb(107 45 92 / 0.09) 1px, transparent 1px),

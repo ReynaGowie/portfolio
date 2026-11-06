@@ -136,7 +136,13 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
   .press { font-size: var(--fs-sm); color: var(--muted); position: relative; z-index: 1; }
   .lead img { margin-top: var(--space-2); border-radius: var(--r-sm); border: 1px solid var(--border); }
   .muted { margin-bottom: 0; }
-  .talk { display: grid; grid-template-columns: 1fr 7.5rem; gap: var(--space-2); align-items: center; }
+  .talk { display: grid; grid-template-columns: 1fr; gap: var(--space-2); align-items: center; }
+  .talk-photo { max-width: 16rem; }
+  /* Side-by-side only when the card is wide enough for both */
+  @media (min-width: 30rem) and (max-width: 51.99rem), (min-width: 70rem) {
+    .talk { grid-template-columns: 1fr 7.5rem; }
+    .talk-photo { max-width: none; }
+  }
   .talk-photo { padding: 4px; }
   .talk-photo img { aspect-ratio: 1; object-fit: cover; object-position: 42% 30%; }
 
