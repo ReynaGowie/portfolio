@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { profile } from '../data/profile';
+import { profile, press } from '../data/profile';
 import { url } from '../lib/url';
 
 interface Props {
@@ -21,6 +21,37 @@ const ogAlt = ogImage ? description : `${profile.name}: ${profile.headline}`;
 const ogImageUrl = Astro.site ? new URL(ogPath, Astro.site).href : null;
 // Keep previews out of search engines until Reyna chooses to be indexed.
 const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
+// Structured data that tells search engines which profiles belong to Reyna.
+// Only on the homepage, and only when a real site address is configured.
+const isHome = Astro.url.pathname.replace(/\/$/, '') === import.meta.env.BASE_URL.replace(/\/$/, '');
+const homeUrl = Astro.site ? new URL(import.meta.env.BASE_URL, Astro.site).href : null;
+const personLd = isHome && homeUrl ? {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${homeUrl}#person`,
+  name: profile.name,
+  alternateName: ['Reyna Gowie', 'Reyna Simone', 'Reyna S. Gowie'],
+  url: homeUrl,
+  image: profile.headshot ? new URL(url(profile.headshot.src), Astro.site).href : undefined,
+  description: profile.shortBio,
+  jobTitle: 'AI Engineer Co-Op',
+  worksFor: { '@type': 'Organization', name: 'IBM', url: 'https://www.ibm.com' },
+  affiliation: { '@type': 'CollegeOrUniversity', name: 'Penn State University', url: 'https://www.psu.edu' },
+  memberOf: [
+    { '@type': 'Organization', name: 'Students Teaching Students', url: 'https://www.stspsu.org/about' },
+    { '@type': 'Organization', name: 'Penn State Student Advisory Committee on AI', url: 'https://ai.psu.edu/about/committees-councils/student-advisory-committee-on-ai' },
+  ],
+  knowsAbout: ['Human-centered AI', 'AI governance', 'Future of work', 'Decision Architecture'],
+  subjectOf: press.map((p) => ({ '@type': 'NewsArticle', headline: p.title, url: p.url, publisher: { '@type': 'Organization', name: p.outlet } })),
+  sameAs: [
+    profile.linkedin,
+    'https://reynasimone.substack.com',
+    'https://www.instagram.com/reynasimoneofficial/',
+    profile.github,
+    'https://reynasimone.gumroad.com',
+    'https://linktr.ee/reynasimone',
+  ],
+} : null;
 ---
 <!doctype html>
 <html lang="en">
@@ -43,6 +74,7 @@ const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
     {ogImageUrl && !ogImage && <meta property="og:image:width" content="1200" />}
     {ogImageUrl && !ogImage && <meta property="og:image:height" content="630" />}
     {ogImageUrl && <meta property="og:image:alt" content={ogAlt} />}
+    {personLd && <script type="application/ld+json" set:html={JSON.stringify(personLd)} />}
     <meta name="twitter:card" content="summary_large_image" />
     {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
