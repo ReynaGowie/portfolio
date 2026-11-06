@@ -1,20 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { profile } from '../data/profile';
+const hasForm = Boolean(profile.contactFormKey);
 ---
 <BaseLayout title="Contact" description="How to reach Reyna Simone Gowie for professional conversations.">
   <div class="narrow hero-panel contact">
+    <p class="eyebrow">Contact</p>
     <h1>Let’s talk</h1>
     <p class="lede">I’m open to conversations about AI engineering, AI product, technology strategy, speaking, and research.</p>
-    <p>The best way to reach me is a message on LinkedIn.</p>
+    {hasForm ? <p>Send me a note below, or find me on LinkedIn.</p> : <p>The best way to reach me is a message on LinkedIn.</p>}
+    <ContactForm />
     <div class="actions">
-      <a class="btn btn-primary" href={profile.linkedin} rel="noopener">Connect on LinkedIn</a>
-      {profile.email && <a class="btn btn-secondary" href={`mailto:${profile.email}`}>Email me</a>}
+      <a class={hasForm ? 'btn btn-secondary' : 'btn btn-primary'} href={profile.linkedin} rel="noopener">Connect on LinkedIn</a>
+      <a class="btn btn-secondary" href={profile.github} rel="noopener">GitHub</a>
     </div>
   </div>
 </BaseLayout>
 <style>
-  .contact { text-align: center; padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem); }
-  .contact .lede { margin-inline: auto; }
-  .contact .actions { justify-content: center; }
+  .contact { padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem); }
 </style>

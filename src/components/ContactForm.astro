@@ -1,0 +1,82 @@
+---
+import { profile } from '../data/profile';
+const key = profile.contactFormKey;
+---
+{key && (
+  <form class="cform" data-cform action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value={key} />
+    <input type="hidden" name="subject" value="New message from your portfolio site" />
+    <input type="hidden" name="from_name" value="Portfolio contact form" />
+    <!-- Honeypot: real people leave this empty -->
+    <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <div class="row2">
+      <label>Name<input name="name" required autocomplete="name" /></label>
+      <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+    </div>
+    <label>What’s it about?
+      <select name="topic">
+        <option>Internship or job opportunity</option>
+        <option>Speaking or panel invitation</option>
+        <option>Research or collaboration</option>
+        <option>Students Teaching Students</option>
+        <option>Something else</option>
+      </select>
+    </label>
+    <label>Message<textarea name="message" rows="5" required></textarea></label>
+    <button class="btn btn-primary" type="submit">Send message</button>
+    <p class="note small muted">Messages are delivered to my inbox through Web3Forms. Your email is used only so I can reply.</p>
+    <p class="result" role="status" aria-live="polite" data-result></p>
+  </form>
+)}
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-cform]');
+  const out = document.querySelector<HTMLElement>('[data-result]');
+  if (form && out) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+      btn.disabled = true;
+      out.textContent = 'Sending…';
+      out.dataset.state = '';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          form.reset();
+          out.textContent = 'Thanks! Your message is on its way, and I’ll get back to you soon.';
+          out.dataset.state = 'ok';
+        } else {
+          throw new Error(data.message || 'Something went wrong.');
+        }
+      } catch {
+        out.textContent = 'Sorry, that didn’t send. Please try again, or message me on LinkedIn.';
+        out.dataset.state = 'error';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .cform { display: grid; gap: var(--space-2); text-align: left; margin-top: var(--space-3); }
+  .row2 { display: grid; gap: var(--space-2); }
+  @media (min-width: 36rem) { .row2 { grid-template-columns: 1fr 1fr; } }
+  label { display: grid; gap: 0.35rem; font-size: var(--fs-sm); font-weight: 500; }
+  input, select, textarea {
+    font: inherit; font-size: var(--fs-base); font-weight: 400; color: var(--text);
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 0.65rem 0.8rem;
+  }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--focus); outline-offset: 1px; border-color: transparent; }
+  textarea { resize: vertical; }
+  button { justify-self: start; border: 0; cursor: pointer; }
+  button:disabled { opacity: 0.6; cursor: wait; }
+  .note, .result { margin: 0; }
+  .result[data-state='ok'] { color: #2f6b4f; }
+  .result[data-state='error'] { color: #a23a3a; }
+</style>
