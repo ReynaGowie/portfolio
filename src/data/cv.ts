@@ -4,15 +4,24 @@
 export const experience = [
   {
     role: 'AI Engineer Co-Op',
-    org: 'IBM',
+    org: 'IBM · Financial Services Market',
     when: 'May 2026–present',
-    note: 'I apply AI to business problems.',
+    // From Reyna's public LinkedIn and CV. No project names or internal details.
+    bullets: [
+      'Support applied AI solution development for Financial Services Market clients within IBM Client Engineering, turning client needs into technical concepts, demos, and proof-of-value work.',
+      'Collaborate with technical sales, engineering, and market teams to translate client needs into AI-enabled workflows and demonstrations.',
+      'Apply Python, AI-assisted development tools, and technical documentation practices to prototype, evaluate, and communicate enterprise technology solutions.',
+    ],
   },
   {
     role: 'Project Engineering Intern',
-    org: 'Whiting-Turner Contracting Company',
-    when: 'Summer 2024',
-    note: 'Estimated materials and costs from architectural drawings, kept project schedules current, and led site walks with stakeholders.',
+    org: 'Whiting-Turner Contracting Company · Morristown, NJ',
+    when: 'June–August 2024',
+    bullets: [
+      'Performed quantity takeoffs on architectural drawings for material and cost estimation.',
+      'Developed and updated project schedules to meet deadlines and track progress.',
+      'Coordinated and led site walks with stakeholders to address concerns.',
+    ],
   },
 ];
 
@@ -35,8 +44,12 @@ export const certifications = [
 export const committee = {
   name: 'Student Advisory Committee on AI',
   org: 'Penn State Office of the Provost',
-  role: 'Member',
+  role: 'Advisor',
   when: 'October 2026–present',
+  bullets: [
+    'Invited by the Provost to serve on a committee of student leaders, faculty, and staff advising how Penn State responds to AI.',
+    'Focus on AI in teaching and learning, including how AI skills are built into the curriculum and how students demonstrate what they’ve learned.',
+  ],
 };
 
 export const technicalProjects = [
