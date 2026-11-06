@@ -5,14 +5,14 @@ topic: AI and education
 order: 1
 status: review
 image:
-  src: /images/five-capabilities.svg
-  alt: "Five labeled capabilities in a row: understand, question, judge, create, contribute."
-  caption: "The five capabilities from my State of State talk."
-  creator: Illustration made for this site
-  sourceUrl: /images/five-capabilities.svg
-  license: Original site illustration
+  src: /images/state-of-state-title-slide.jpg
+  alt: "Title slide reading What Should a Penn State Degree Mean Now?, for State of State 2026, with Reyna Gowie's name, her role as president of Students Teaching Students, and a photo of Penn State's Old Main."
+  caption: "The opening slide from my State of State 2026 talk, November 4."
+  creator: Slide by Reyna Gowie
+  sourceUrl: /images/state-of-state-title-slide.jpg
+  license: Reyna Gowie's own work
   placeholder: false
-  approved: false
+  approved: true
 sources:
   - publisher: Inside Higher Ed (Emma Whitford)
     title: MIT AI Report Calls for Alternative Grading, More Social Learning
@@ -38,6 +38,11 @@ Universities already ask students to show their work. AI gives them a reason to 
 ## What I want a degree to demonstrate
 
 In my State of State talk, I argued that a degree should show someone can understand, question, judge, create, and contribute. Those capabilities should be visible in what graduates can do.
+
+<figure>
+  <img src="../../images/five-capabilities.svg" alt="Five labeled capabilities in a row: understand, question, judge, create, contribute." width="1200" height="675" loading="lazy" />
+  <figcaption>The five capabilities from my State of State talk. Illustration made for this site. <a href="../../images/five-capabilities.svg">Image source</a></figcaption>
+</figure>
 
 A student using AI to propose a solution should still explain the problem, check its assumptions, and defend their choices. Producing an answer doesn’t settle whether they can evaluate it.
 
