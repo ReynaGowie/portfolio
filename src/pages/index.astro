@@ -11,6 +11,12 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
 ---
 <BaseLayout title={profile.name} description={`${profile.name}: ${profile.shortBio} Writing on AI, education, and who gets a say in the systems that shape people's lives.`}>
   <section class="wrap"><div class="hero-panel hero">
+    <ul class="floaters" aria-hidden="true">
+      <li class="chip" style="--tilt:-6deg;top:8%;left:52%">AI engineering</li>
+      <li class="chip" style="--tilt:4deg;top:91%;left:22%">course design</li>
+      <li class="chip" style="--tilt:-3deg;top:89%;left:52%">youth policy</li>
+      <li class="chip" style="--tilt:5deg;top:6%;left:4%">who gets a say?</li>
+    </ul>
     <div class="hero-text">
       <h1>
         <span class="sr-only">{profile.headline}</span>
@@ -125,8 +131,12 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
 </script>
 
 <style>
-  .hero { display: grid; gap: var(--space-4); align-items: center; padding-block: clamp(1.5rem, 5vw, 3.5rem); }
-  .hero > * { position: relative; z-index: 1; }
+  .hero { display: grid; gap: var(--space-4); align-items: center; padding-block: clamp(3rem, 7vw, 5rem); }
+  .hero > :not(.floaters) { position: relative; z-index: 1; }
+  .floaters { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; pointer-events: none; display: none; }
+  .floaters li { position: absolute; transform: rotate(var(--tilt)); color: var(--accent); font-size: var(--fs-sm); }
+  .floaters li:nth-child(odd) { background: var(--accent-soft); border-color: transparent; }
+  @media (min-width: 64rem) { .floaters { display: block; } }
   .cycle { display: inline-block; font-size: 1.3em; line-height: 0.8; margin-right: 0.18em; transition: opacity 260ms ease, transform 260ms ease; }
   .cycle.out { opacity: 0; transform: translateY(0.25em) rotate(-3deg); }
   .hero :global(.mark) { position: absolute; z-index: 0; pointer-events: none; font-family: var(--script); font-weight: 600; color: var(--accent); font-size: 1.6rem; line-height: 1; animation: drift 1100ms ease-out forwards; }
