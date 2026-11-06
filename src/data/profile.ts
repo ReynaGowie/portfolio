@@ -1,6 +1,6 @@
 // Single source of truth for public profile facts. Edit here, not in pages.
 export const profile = {
-  name: 'Reyna Gowie',
+  name: 'Reyna Simone Gowie',
   headline: 'I build AI and ask who it’s built for.',
   shortBio:
     'Enterprise Technology Integration student at Penn State and AI Engineer Co-Op at IBM.',
@@ -18,7 +18,7 @@ export const profile = {
   // public/images/. While null, a clearly marked development placeholder shows.
   headshot: {
     src: '/images/reyna-gowie-headshot.jpg',
-    alt: 'Reyna Gowie smiling in a black blazer, standing outside a glass building on a sunny day.',
+    alt: 'Reyna Simone Gowie smiling in a black blazer, standing outside a glass building on a sunny day.',
   } as null | { src: string; alt: string },
 };
 

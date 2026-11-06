@@ -7,7 +7,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string().min(1),
     description: z.string().min(1),
-    author: z.string().default('Reyna Gowie'),
+    author: z.string().default('Reyna Simone Gowie'),
     // Omit until Reyna picks a real publication date. Never backfill.
     pubDate: z.coerce.date().optional(),
     topic: z.string().min(1),

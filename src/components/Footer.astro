@@ -1,27 +1,46 @@
 ---
 import { nav, profile } from '../data/profile';
+import { substack } from '../data/cv';
 import { url } from '../lib/url';
+const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <div class="wrap foot">
-    <div>
-      <p class="name">{profile.name}</p>
-      <p class="small">Views on this site are my own and don’t represent IBM or Penn State.</p>
+  <div class="wrap">
+    <div class="top">
+      <div class="who">
+        <p class="name">{profile.name}</p>
+        <p class="tag">{profile.headline}</p>
+      </div>
+      <nav aria-label="Footer">
+        <p class="col-label">Site</p>
+        <ul>{nav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}</ul>
+      </nav>
+      <div>
+        <p class="col-label">Elsewhere</p>
+        <ul>
+          <li><a href={profile.linkedin} rel="noopener">LinkedIn</a></li>
+          <li><a href={substack.url} rel="noopener">{substack.name} (Substack)</a></li>
+        </ul>
+      </div>
     </div>
-    <nav aria-label="Footer">
-      <ul>
-        {nav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
-        <li><a href={profile.linkedin} rel="noopener">LinkedIn</a></li>
-      </ul>
-    </nav>
+    <div class="bottom">
+      <p>© {year} {profile.name}. All rights reserved.</p>
+      <p>Views on this site are my own and don’t represent IBM or Penn State.</p>
+      <p>Stock photos are credited on the posts where they appear.</p>
+    </div>
   </div>
 </footer>
 <style>
-  .site-footer { border-top: 1px solid var(--border); padding-block: var(--space-4); font-size: var(--fs-sm); color: var(--muted); }
-  .foot { display: flex; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; }
-  .name { font-family: var(--serif); font-size: var(--fs-base); color: var(--text); margin-bottom: 0.25rem; }
-  .small { margin: 0; max-width: 32rem; }
-  ul { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; }
+  .site-footer { margin-top: var(--space-5); background: var(--card); border-top: 1px solid var(--border); font-size: var(--fs-sm); color: var(--muted); }
+  .top { display: grid; gap: var(--space-3); padding-block: var(--space-4) var(--space-3); }
+  @media (min-width: 48rem) { .top { grid-template-columns: 2fr 1fr 1fr; } }
+  .name { font-family: var(--serif); font-variation-settings: 'SOFT' 100; font-size: var(--fs-md); color: var(--text); margin: 0 0 0.25rem; }
+  .tag { margin: 0; max-width: 22rem; }
+  .col-label { font-family: var(--script); font-weight: 600; font-size: 1.35rem; line-height: 1; color: var(--accent); margin: 0 0 0.5rem; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
   a { color: var(--muted); text-decoration: none; }
-  a:hover { color: var(--accent); }
+  a:hover { color: var(--accent); text-decoration: underline; }
+  .bottom { border-top: 1px solid var(--border); padding-block: var(--space-2) var(--space-3); display: flex; flex-wrap: wrap; gap: 0.25rem var(--space-3); }
+  .bottom p { margin: 0; }
+  .bottom p:first-child { color: var(--text); }
 </style>

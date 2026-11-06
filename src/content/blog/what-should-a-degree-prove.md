@@ -8,9 +8,9 @@ image:
   src: /images/state-of-state-title-slide.jpg
   alt: "Title slide reading What Should a Penn State Degree Mean Now?, for State of State 2026, with Reyna Gowie's name, her role as president of Students Teaching Students, and a photo of Penn State's Old Main."
   caption: "The opening slide from my State of State 2026 talk, November 4."
-  creator: Slide by Reyna Gowie
+  creator: Slide by Reyna Simone Gowie
   sourceUrl: /images/state-of-state-title-slide.jpg
-  license: Reyna Gowie's own work
+  license: Reyna Simone Gowie's own work
   placeholder: false
   approved: true
 sources:
