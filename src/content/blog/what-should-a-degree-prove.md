@@ -1,6 +1,6 @@
 ---
 title: What Should a Degree Prove When AI Can Do the Homework?
-description: "A perfect assignment can leave a basic question unanswered: did the student learn anything?"
+description: "A perfect assignment can still leave you wondering whether the student learned anything."
 topic: AI and education
 order: 1
 status: review
@@ -21,15 +21,15 @@ sources:
     claim: An MIT committee cited "increased difficulty in assessing students' mastery and progress" and recommended changes to grading and teaching.
 ---
 
-A perfect assignment can leave a basic question unanswered: did the student learn anything? AI makes that question harder to avoid when polished work arrives without much evidence of the thinking behind it.
+A perfect assignment can still leave you wondering whether the student learned anything. AI makes that question harder to avoid when polished work arrives without much evidence of the thinking behind it.
 
-As a student studying technology, I want universities to explain what their degrees demonstrate. Completing assignments matters, but a convincing submission doesn’t tell us everything about what someone understands.
+As an Enterprise Technology Integration student, I want universities to make students’ reasoning and judgment visible. Completing assignments matters, but a convincing submission doesn’t tell us everything about what someone understands.
 
 ## What the finished assignment can tell us
 
-In August, [Inside Higher Ed reported on an MIT committee’s recommendations](https://www.insidehighered.com/news/tech-innovation/artificial-intelligence/2026/08/28/mit-ai-report-calls-alternative-grading) for responding to AI. The committee identified growing difficulty assessing students’ mastery and called for changes to teaching and grading.
+In August, [Inside Higher Ed reported on an MIT committee’s recommendations](https://www.insidehighered.com/news/tech-innovation/artificial-intelligence/2026/08/28/mit-ai-report-calls-alternative-grading) for responding to AI. The committee cited growing difficulty assessing students’ mastery and suggested exploring alternatives to traditional grades.
 
-I’m interested in that willingness to reconsider assessment. If students can complete an assignment without practicing the skill it’s supposed to measure, instructors need to examine what they’re actually grading.
+I think the committee is right to rethink what grades are for. If students can complete an assignment without practicing the skill it’s supposed to measure, instructors need to examine what they’re actually grading.
 
 An essay can still reveal learning. A conversation about its argument or an explanation of revisions could help an instructor see how well the student understands what they submitted.
 
@@ -37,11 +37,11 @@ Universities already ask students to show their work. AI gives them a reason to 
 
 ## What I want a degree to demonstrate
 
-I think a degree should signal that someone can understand, question, judge, create, and contribute. Those capabilities should be visible in what graduates can do, beyond the grades they earned.
+In my State of State talk, I argued that a degree should show someone can understand, question, judge, create, and contribute. Those capabilities should be visible in what graduates can do.
 
 A student using AI to propose a solution should still explain the problem, check its assumptions, and defend their choices. Producing an answer doesn’t settle whether they can evaluate it.
 
-Employers have a stake in this, too. Someone who produces polished material still needs to recognize errors, explain a tradeoff, and take responsibility for decisions made using that material.
+Employers have a stake in this, too. Someone who produces polished material at work still needs to catch its errors and take responsibility for the decisions it informs.
 
 Students should help redesign these assessments. We’re preparing for workplaces where using AI and exercising judgment will happen together, and our education should give us practice doing both responsibly.
 

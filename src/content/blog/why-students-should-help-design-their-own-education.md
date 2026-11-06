@@ -27,7 +27,7 @@ That experience should count when universities decide how learning happens. Crea
 
 ## Give students a role before the evaluation
 
-A recent [ASU News article about Project Gen Z](https://news.asu.edu/20260223-science-and-technology-project-gen-z-asks-whether-college-teaching-working-current) describes undergraduates helping researchers investigate student learning. They help shape questions, interpret findings, and recommend changes to a biology course.
+A recent [ASU News article about Project Gen Z](https://news.asu.edu/20260223-science-and-technology-project-gen-z-asks-whether-college-teaching-working-current) describes 14 undergraduates who joined a research team studying how students learn. They help shape questions, interpret findings, and recommend changes to a biology course.
 
 What interests me is where students enter the process. They’re helping decide what needs investigating, with opportunities to influence the course beyond commenting on decisions that have already been made.
 
@@ -35,7 +35,7 @@ As president of Penn State’s Students Teaching Students, I support undergradua
 
 ## Having a say means taking responsibility
 
-For the final project, students will represent a classmate through an identity card and presentation. That sounds fun. It also means someone else gets to tell your story.
+For the final project, students will represent a classmate through an identity card and presentation. That sounds fun, but it also means someone else gets to tell your story.
 
 My hardest design decision was how much structure to put around privacy and consent. Too little could leave students exposed; too much could make an open discussion seminar feel procedural.
 
@@ -47,4 +47,4 @@ The course hasn’t run yet, so I can’t claim these choices have worked. Their
 
 Designing the course made me responsible for questions I might otherwise have encountered only as a student. Universities should give more students that opportunity, with guidance and room to revise.
 
-We already experience the design. We should help shape it.
+Students already experience course design every semester, from the receiving end. We should also help shape it, the way the Project Gen Z students help shape a biology course.

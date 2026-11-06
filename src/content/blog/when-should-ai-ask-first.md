@@ -27,9 +27,9 @@ AI agents can take actions on our behalf, which makes the limits of their permis
 
 ## Permission needs boundaries
 
-In an [October announcement, Walmart described its planned Agent Profiles](https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers), which would let customers authorize shopping agents individually. Customers could require approval for each purchase or permit purchases within a spending limit.
+In an [October announcement, Walmart described its planned Agent Profiles](https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers), which would let customers authorize shopping agents individually. Customers could require approval for each purchase or permit purchases within a spending limit, such as $100.
 
-I like that customers would choose how much authority to give an agent. But a spending limit only goes so far. An unwanted purchase can stay comfortably within budget.
+I like that customers would choose how much authority to give an agent. But a spending limit only goes so far. An unwanted purchase can stay comfortably under a $100 cap.
 
 Permission to reorder household supplies might leave substitutions unresolved. Choosing a different brand or starting a subscription could fit the budget while going beyond what the customer had in mind.
 
@@ -43,6 +43,6 @@ I would want a checkpoint before it bought a nonrefundable ticket, unless I’d 
 
 The same distinction matters at work. An agent might have permission to draft a message without permission to send it. Access to an inbox doesn’t establish what someone wants done there.
 
-Designers should make permissions easy to inspect and change. People need to see what an agent has done and be able to stop further actions without searching through settings.
+Designers should make permissions easy to inspect and change. Walmart’s plan gives each agent a profile where customers can see its purchases. People should also be able to stop further actions without searching through settings.
 
 I want to delegate work without having to guess what I’ve agreed to. Finding a flight can save me time. Buying the ticket should depend on permission I actually gave.
