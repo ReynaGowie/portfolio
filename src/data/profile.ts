@@ -16,7 +16,7 @@ export const profile = {
   // Contact form. Paste the Web3Forms access key (from web3forms.com) to turn
   // the form on. The key is meant to be public; it only lets visitors send
   // messages to the inbox Reyna registered, and that address is never shown.
-  contactFormKey: null as string | null,
+  contactFormKey: 'd498337c-ee3b-4388-80a1-c127a0186175' as string | null,
   // Leave null until Reyna supplies an approved public email.
   email: null as string | null,
   // Set to the real file path once an approved headshot is added to
