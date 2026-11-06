@@ -1,40 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d">
   <title id="t">Guess Who? course sequence</title>
-  <desc id="d">Unit 0 foundations for two weeks, then partner work under consent and privacy guidelines, then six graded checkpoints, then the final presentation.</desc>
-  <rect width="1200" height="675" fill="#faf7f2"/>
-  <text x="80" y="110" font-family="Georgia, serif" font-size="40" fill="#1c1a1a">How the course is sequenced</text>
-  <text x="80" y="155" font-family="system-ui, sans-serif" font-size="22" fill="#5c5650">Ethics and consent come before anyone tells a classmate’s story.</text>
-  <g font-family="system-ui, sans-serif">
-    <rect x="80" y="230" width="300" height="190" rx="10" fill="#5b2a4e"/>
-    <text x="110" y="280" font-size="18" fill="#f1e8ee" letter-spacing="2">UNIT 0 · 2 WEEKS</text>
-    <text x="110" y="325" font-size="28" fill="#fff" font-family="Georgia, serif">Foundations of</text>
-    <text x="110" y="362" font-size="28" fill="#fff" font-family="Georgia, serif">Identity and</text>
-    <text x="110" y="399" font-size="28" fill="#fff" font-family="Georgia, serif">Representation</text>
-    <path d="M395 325 h40" stroke="#5b2a4e" stroke-width="4"/><path d="M432 313 l14 12 -14 12" fill="none" stroke="#5b2a4e" stroke-width="4"/>
-    <rect x="460" y="230" width="300" height="190" rx="10" fill="#fff" stroke="#5b2a4e" stroke-width="3"/>
-    <text x="490" y="280" font-size="18" fill="#5b2a4e" letter-spacing="2">PARTNER WORK</text>
-    <text x="490" y="322" font-size="20" fill="#1c1a1a">Consent · Privacy</text>
-    <text x="490" y="352" font-size="20" fill="#1c1a1a">Right not to share</text>
-    <text x="490" y="382" font-size="20" fill="#1c1a1a">Right to correct</text>
-    <text x="490" y="412" font-size="20" fill="#1c1a1a">Alternative assignment</text>
-    <path d="M775 325 h40" stroke="#5b2a4e" stroke-width="4"/><path d="M812 313 l14 12 -14 12" fill="none" stroke="#5b2a4e" stroke-width="4"/>
-    <rect x="840" y="230" width="280" height="190" rx="10" fill="#f1e8ee" stroke="#5b2a4e" stroke-width="3"/>
-    <text x="870" y="280" font-size="18" fill="#5b2a4e" letter-spacing="2">FINAL PROJECT</text>
-    <text x="870" y="322" font-size="20" fill="#1c1a1a">Identity card and</text>
-    <text x="870" y="352" font-size="20" fill="#1c1a1a">presentation about</text>
-    <text x="870" y="382" font-size="20" fill="#1c1a1a">a classmate</text>
+  <desc id="d">Unit 0 foundations for two weeks, then partner work under consent and privacy guidelines, then the final project, graded across six checkpoints.</desc>
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <text x="80" y="130" font-family="'Libre Baskerville', Georgia, serif" font-size="44" fill="#161416">How the course is sequenced</text>
+  <text x="80" y="178" font-family="Geist, system-ui, sans-serif" font-size="22" fill="#5f5a5f">Ethics and consent come before anyone tells a classmate’s story.</text>
+  <g font-family="Geist, system-ui, sans-serif">
+    <line x1="80" y1="250" x2="420" y2="250" stroke="#6b2d5c" stroke-width="4"/>
+    <line x1="440" y1="250" x2="780" y2="250" stroke="#161416" stroke-width="2"/>
+    <line x1="800" y1="250" x2="1120" y2="250" stroke="#161416" stroke-width="2"/>
+    <g font-size="18" fill="#6b2d5c"><text x="80" y="290">Unit 0 · 2 weeks</text></g>
+    <g font-size="18" fill="#5f5a5f"><text x="440" y="290">Partner work</text><text x="800" y="290">Final project</text></g>
   </g>
-  <g font-family="system-ui, sans-serif">
-    <text x="80" y="510" font-size="18" fill="#5c5650" letter-spacing="2">SIX GRADED CHECKPOINTS INSTEAD OF ONE FINAL SUBMISSION</text>
-    <line x1="100" y1="565" x2="1100" y2="565" stroke="#e3ddd3" stroke-width="4"/>
-    <g fill="#5b2a4e">
-      <circle cx="100" cy="565" r="18"/><circle cx="300" cy="565" r="18"/><circle cx="500" cy="565" r="18"/>
-      <circle cx="700" cy="565" r="18"/><circle cx="900" cy="565" r="18"/><circle cx="1100" cy="565" r="18"/>
+  <g font-family="'Libre Baskerville', Georgia, serif" font-size="28" fill="#161416">
+    <text x="80" y="340">Foundations of Identity</text><text x="80" y="378">and Representation</text>
+    <text x="440" y="340">Consent and privacy</text><text x="440" y="378">guidelines first</text>
+    <text x="800" y="340">Identity card and</text><text x="800" y="378">presentation</text>
+  </g>
+  <g font-family="Geist, system-ui, sans-serif" font-size="20" fill="#5f5a5f">
+    <text x="440" y="420">Right not to share · right to correct</text>
+    <text x="440" y="448">Alternative assignment available</text>
+    <text x="800" y="420">About a classmate, with</text>
+    <text x="800" y="448">their consent</text>
+  </g>
+  <g font-family="Geist, system-ui, sans-serif">
+    <text x="80" y="535" font-size="18" fill="#5f5a5f">Graded in six checkpoints, not one final submission</text>
+    <line x1="80" y1="580" x2="1120" y2="580" stroke="#e4dfda" stroke-width="2"/>
+    <g fill="#ffffff" stroke="#6b2d5c" stroke-width="3">
+      <circle cx="90" cy="580" r="10"/><circle cx="296" cy="580" r="10"/><circle cx="502" cy="580" r="10"/>
+      <circle cx="708" cy="580" r="10"/><circle cx="914" cy="580" r="10"/>
     </g>
-    <g font-size="16" fill="#fff" text-anchor="middle" font-weight="700">
-      <text x="100" y="571">1</text><text x="300" y="571">2</text><text x="500" y="571">3</text>
-      <text x="700" y="571">4</text><text x="900" y="571">5</text><text x="1100" y="571">6</text>
-    </g>
-    <text x="1100" y="615" font-size="18" fill="#5c5650" text-anchor="end">Final presentation</text>
+    <circle cx="1110" cy="580" r="10" fill="#6b2d5c"/>
+    <text x="1120" y="625" font-size="18" fill="#5f5a5f" text-anchor="end">Final presentation</text>
   </g>
 </svg>

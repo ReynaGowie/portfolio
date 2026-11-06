@@ -1,23 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ArticleCard from '../../components/ArticleCard.astro';
+import ArticleRow from '../../components/ArticleRow.astro';
 import { getPosts } from '../../lib/posts';
 const posts = await getPosts();
 ---
 <BaseLayout title="Blog" description="Writing by Reyna Gowie on AI, education, and who gets a say in the systems that shape people's lives.">
   <div class="wrap">
-    <div class="page-head head-center">
-    <p class="eyebrow">Blog</p>
-    <h1>Writing</h1>
-    <p class="lede">Short essays on AI, education, and who gets a say in the systems that shape our lives.</p>
+    <div class="page-head">
+      <h1>Writing</h1>
+      <p class="lede">Short essays on AI, education, and who gets a say in the systems that shape our lives.</p>
     </div>
-    <div class="grid">
-      {posts.map((post) => <ArticleCard post={post} headingLevel="h2" />)}
+    <div class="list">
+      {posts.map((post) => <ArticleRow post={post} headingLevel="h2" showImage />)}
     </div>
   </div>
 </BaseLayout>
-<style>
-  .head-center { text-align: center; }
-  .head-center .lede { margin-inline: auto; }
-  .grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 22rem)); justify-content: center; }
-</style>

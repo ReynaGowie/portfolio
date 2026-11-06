@@ -3,8 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { profile } from '../data/profile';
 ---
 <BaseLayout title="Contact" description="How to reach Reyna Gowie for professional conversations.">
-  <div class="narrow contact card-surface">
-    <p class="eyebrow">Contact</p>
+  <div class="narrow">
     <h1>Let’s talk</h1>
     <p class="lede">I’m open to conversations about AI engineering, AI product, technology strategy, speaking, and research.</p>
     <p>The best way to reach me is a message on LinkedIn.</p>
@@ -14,8 +13,3 @@ import { profile } from '../data/profile';
     </div>
   </div>
 </BaseLayout>
-<style>
-  .contact { text-align: center; padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem); margin-top: var(--space-3); }
-  .contact .lede { margin-inline: auto; }
-  .contact .actions { justify-content: center; }
-</style>

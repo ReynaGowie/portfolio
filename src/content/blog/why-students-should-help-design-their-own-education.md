@@ -6,7 +6,7 @@ order: 3
 status: review
 image:
   src: /images/guess-who-structure.svg
-  alt: "Diagram of the Guess Who? course sequence: a two-week Unit 0 on foundations, then partner work under consent and privacy guidelines, then six graded checkpoints leading to the final presentation."
+  alt: "Diagram of the Guess Who? course sequence: a two-week Unit 0 on foundations, then partner work under consent and privacy guidelines, then a final project graded across six checkpoints."
   caption: "How Guess Who? is sequenced so ethics and consent come before partner work."
   creator: Illustration made for this site
   sourceUrl: /images/guess-who-structure.svg

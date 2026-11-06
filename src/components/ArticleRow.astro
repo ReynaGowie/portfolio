@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url, readingMinutes } from '../lib/url';
+interface Props { post: CollectionEntry<'blog'>; headingLevel?: 'h2' | 'h3'; showImage?: boolean }
+const { post, headingLevel = 'h3', showImage = false } = Astro.props;
+const H = headingLevel;
+const href = url(`/blog/${post.id}/`);
+const mins = readingMinutes(post.body);
+const showStatus = import.meta.env.DEV && post.data.status !== 'final';
+---
+<article class:list={['row', { 'with-image': showImage }]}>
+  {showImage && (
+    <a class="thumb" href={href} tabindex="-1" aria-hidden="true">
+      <img src={url(post.data.image.src)} alt="" loading="lazy" width="1200" height="675" />
+    </a>
+  )}
+  <div class="text">
+    <p class="meta">{post.data.topic} · {mins} min read{showStatus && <> <span class="status">{post.data.status}</span></>}</p>
+    <H class="title"><a href={href}>{post.data.title}</a></H>
+    <p class="excerpt">{post.data.description}</p>
+  </div>
+</article>
+<style>
+  .row { border-top: 1px solid var(--border); padding-block: var(--space-3); display: grid; gap: var(--space-3); }
+  .row:last-child { border-bottom: 1px solid var(--border); }
+  @media (min-width: 40rem) { .with-image { grid-template-columns: 14rem 1fr; align-items: start; } }
+  .thumb img { border: 1px solid var(--border); border-radius: var(--r); aspect-ratio: 16 / 9; object-fit: cover; width: 100%; background: #fff; }
+  .meta { font-size: var(--fs-sm); color: var(--muted); margin-bottom: 0.4rem; }
+  .title { font-size: var(--fs-md); margin-bottom: 0.4rem; }
+  .title a { color: var(--text); text-decoration: none; }
+  .title a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
+  .excerpt { color: var(--muted); margin: 0; max-width: 40rem; }
+</style>

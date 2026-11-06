@@ -1,24 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Headshot from '../components/Headshot.astro';
-import ArticleCard from '../components/ArticleCard.astro';
-import WorkFeature from '../components/WorkFeature.astro';
+import ArticleRow from '../components/ArticleRow.astro';
 import { profile, guessWho } from '../data/profile';
 import { stateOfState } from '../data/speaking';
 import { getPosts } from '../lib/posts';
 import { url } from '../lib/url';
 const posts = await getPosts();
+const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${stateOfState.date}`;
 ---
 <BaseLayout title={profile.name} description={`${profile.name}: ${profile.shortBio} Writing on AI, education, and who gets a say in the systems that shape people's lives.`}>
   <section class="wrap hero">
     <div class="hero-text">
-      <p class="hello">Hi, I’m Reyna</p>
       <h1>{profile.headline}</h1>
       <p class="lede">I’m Reyna Gowie, an Enterprise Technology Integration student at Penn State and an AI Engineer Co-Op at IBM.</p>
       <p class="lede">My work connects technology, education, and a question I keep coming back to: who gets a say in the systems that shape their lives?</p>
       <div class="actions">
         <a class="btn btn-primary" href={url('/projects/')}>View my work</a>
-        <a class="btn btn-secondary" href={url('/blog/')}>Read my writing <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-secondary" href={url('/blog/')}>Read my writing</a>
       </div>
     </div>
     <div class="hero-photo"><Headshot /></div>
@@ -27,56 +26,69 @@ const posts = await getPosts();
   <section class="wrap section" aria-labelledby="work-h">
     <div class="section-head">
       <h2 id="work-h">Selected work</h2>
-      <p>Courses, communities, and talks built around who gets a say.</p>
+      <a href={url('/projects/')}>All projects</a>
     </div>
-    <div class="grid-3">
-      <WorkFeature kicker="Course design" status={`Launching ${guessWho.term}`} title={guessWho.title} href={url('/projects/#guess-who')}>
-        <p>A philosophy seminar I designed as an undergraduate, with privacy and consent built into how students represent each other.</p>
-      </WorkFeature>
-      <WorkFeature kicker="Student leadership" status="Current" title="Students Teaching Students" href={url('/projects/#sts')}>
-        <p>As president, I help Penn State undergraduates turn their ideas into real, for-credit courses with faculty supervision.</p>
-      </WorkFeature>
-      <WorkFeature kicker="Speaking" status={stateOfState.delivered ? stateOfState.date : `Scheduled · ${stateOfState.date}`} title={stateOfState.title} href={url('/speaking/')}>
-        <p>A State of State 2026 talk on what a degree should demonstrate when AI can produce the work that used to prove learning.</p>
-      </WorkFeature>
+    <div class="work">
+      <article class="lead">
+        <p class="meta">Course design <span class="status">Launching {guessWho.term}</span></p>
+        <h3><a href={url('/projects/#guess-who')}><em>{guessWho.title}</em></a></h3>
+        <p class="muted">A philosophy seminar I designed as an undergraduate, with privacy and consent built into how students represent each other.</p>
+        <img src={url('/images/guess-who-structure.svg')} alt="" width="1200" height="675" loading="lazy" />
+      </article>
+      <div class="side">
+        <article>
+          <p class="meta">Student leadership <span class="status">Current</span></p>
+          <h3><a href={url('/projects/#sts')}>Students Teaching Students</a></h3>
+          <p class="muted">As president, I help Penn State undergraduates turn their ideas into real, for-credit courses with faculty supervision.</p>
+        </article>
+        <article>
+          <p class="meta">Speaking <span class="status">{talkStatus}</span></p>
+          <h3><a href={url('/speaking/')}>{stateOfState.title}</a></h3>
+          <p class="muted">A State of State 2026 talk on what a degree should demonstrate when AI can produce the work that used to prove learning.</p>
+        </article>
+      </div>
     </div>
-    <p class="section-more"><a class="btn btn-secondary" href={url('/projects/')}>All projects <span class="arrow" aria-hidden="true">→</span></a></p>
   </section>
 
   <section class="wrap section" aria-labelledby="writing-h">
     <div class="section-head">
       <h2 id="writing-h">Writing</h2>
-      <p>Short essays on AI, education, and who gets a say.</p>
+      <a href={url('/blog/')}>All posts</a>
     </div>
-    <div class="grid-posts">
-      {posts.map((post) => <ArticleCard post={post} />)}
+    <div class="list">
+      {posts.map((post) => <ArticleRow post={post} />)}
     </div>
-    <p class="section-more"><a class="btn btn-secondary" href={url('/blog/')}>All posts <span class="arrow" aria-hidden="true">→</span></a></p>
   </section>
 
-  <section class="wrap section">
-    <div class="cta card-surface">
-      <h2>Let’s talk</h2>
-      <p>I’m glad to hear from people working on AI, technology strategy, education, or the policy questions around them.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href={profile.linkedin} rel="noopener">Connect on LinkedIn</a>
-        <a class="btn btn-secondary" href={url('/contact/')}>Contact <span class="arrow" aria-hidden="true">→</span></a>
-      </div>
+  <section class="wrap section" aria-labelledby="contact-h">
+    <div class="section-head">
+      <h2 id="contact-h">Get in touch</h2>
+    </div>
+    <div class="actions flush">
+      <a class="btn btn-primary" href={profile.linkedin} rel="noopener">Connect on LinkedIn</a>
+      <a class="btn btn-secondary" href={url('/contact/')}>Contact page</a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .hero { display: grid; gap: var(--space-4); align-items: center; padding-top: var(--space-3); }
-  @media (min-width: 52rem) { .hero { grid-template-columns: 1.25fr 1fr; gap: var(--space-5); } .hero-photo { justify-self: center; } }
-  .hello { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.75rem; }
-  .hero h1 { max-width: 14ch; }
-  .hero-photo { width: 100%; max-width: 22rem; }
-  .grid-3 { display: grid; gap: var(--space-3); }
-  @media (min-width: 48rem) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
-  .grid-posts { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 22rem)); justify-content: center; }
-  .cta { text-align: center; padding: var(--space-5) var(--space-3); }
-  .cta h2 { font-style: italic; }
-  .cta p { color: var(--muted); max-width: 34rem; margin-inline: auto; }
-  .cta .actions { justify-content: center; }
+  .hero { display: grid; gap: var(--space-4); align-items: end; }
+  @media (min-width: 52rem) { .hero { grid-template-columns: 1fr 20rem; gap: var(--space-5); } }
+  .hero h1 { max-width: 16ch; margin-bottom: var(--space-3); }
+  .hero-photo { max-width: 20rem; }
+
+  .work { display: grid; gap: var(--space-4); }
+  @media (min-width: 52rem) { .work { grid-template-columns: 1.6fr 1fr; gap: var(--space-5); } }
+  .work article { min-width: 0; }
+  .work h3 a { color: var(--text); text-decoration: none; }
+  .work h3 a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
+  .meta { font-size: var(--fs-sm); color: var(--muted); display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .lead h3 { font-size: var(--fs-lg); }
+  .lead img { margin-top: var(--space-3); border: 1px solid var(--border); border-radius: var(--r); background: #fff; }
+  .side { display: grid; gap: 0; align-content: start; }
+  .side article { border-top: 1px solid var(--border); padding-block: var(--space-3); }
+  .side article:first-child { border-top: 0; padding-top: 0; }
+  @media (max-width: 51.99rem) { .side article:first-child { border-top: 1px solid var(--border); padding-top: var(--space-3); } }
+  .side p:last-child { margin: 0; }
+  .flush { margin-top: 0; }
 </style>

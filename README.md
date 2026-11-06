@@ -26,7 +26,7 @@ npm run check:final  # fails unless every assignment requirement passes
 | Talks and events, including whether State of State was delivered | `src/data/speaking.ts` |
 | Blog posts | `src/content/blog/*.md` |
 | Page text | `src/pages/*.astro` |
-| Colors, fonts, spacing | `src/styles/global.css` (top of file) |
+| Colors, fonts, spacing, corner sizes | `src/styles/global.css` (the design rules are listed at the top) |
 | Images | `public/images/` |
 
 ### Add your headshot
@@ -99,7 +99,7 @@ BASE_PATH=/portfolio npm run preview   # then open http://localhost:4321/portfol
 ## What's in the project
 
 ```
-src/components   Header, Footer, ArticleCard, WorkFeature, ImageCredit, Headshot
+src/components   Header, Footer, ArticleRow, ImageCredit, Headshot
 src/layouts      BaseLayout (SEO, nav), ArticleLayout
 src/pages        index, about, projects, speaking, contact, 404, blog/
 src/content/blog the three posts (Markdown)

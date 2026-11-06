@@ -3,20 +3,17 @@ import { nav, profile } from '../data/profile';
 import { url } from '../lib/url';
 const current = Astro.url.pathname;
 const isCurrent = (href: string) => current.startsWith(url(href));
-const onHome = current === url('/');
 ---
 <header class="site-header">
-  <div class="pill">
-    <a class="brand" href={url('/')} aria-current={onHome ? 'page' : undefined}>{profile.name}</a>
+  <div class="wrap bar">
+    <a class="brand" href={url('/')}>{profile.name}</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>
       <span class="menu-label">Menu</span>
     </button>
     <nav id="site-nav" aria-label="Main">
       <ul>
         {nav.map((item) => (
-          <li>
-            <a href={url(item.href)} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
-          </li>
+          <li><a href={url(item.href)} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>
         ))}
       </ul>
     </nav>
@@ -43,42 +40,24 @@ const onHome = current === url('/');
 </script>
 
 <style>
-  .site-header {
-    position: fixed; top: 0.9rem; left: 0; right: 0; z-index: 50;
-    display: flex; justify-content: center; padding-inline: 1rem; pointer-events: none;
-  }
-  .pill {
-    pointer-events: auto;
-    display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap;
-    padding: 0.3rem; border-radius: 999px;
-    background: rgb(255 255 255 / 0.72);
-    border: 1px solid rgb(255 255 255 / 0.9);
-    box-shadow: 0 1px 2px rgb(20 18 20 / 0.06), 0 6px 20px rgb(20 18 20 / 0.08);
-    backdrop-filter: blur(14px) saturate(1.4);
-    -webkit-backdrop-filter: blur(14px) saturate(1.4);
-  }
-  .brand, nav a {
-    display: block; padding: 0.4rem 0.85rem; border-radius: 999px;
-    font-size: 0.9rem; color: var(--muted); text-decoration: none; white-space: nowrap;
-    transition: background-color 150ms ease, color 150ms ease;
-  }
-  .brand { font-family: var(--serif); font-style: italic; color: var(--text); }
-  .brand:hover, nav a:hover { color: var(--text); background: rgb(20 18 20 / 0.05); }
-  .brand[aria-current='page'], nav a[aria-current='page'] {
-    background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgb(20 18 20 / 0.12);
-  }
-  nav ul { list-style: none; display: flex; gap: 0.1rem; margin: 0; padding: 0; }
+  .site-header { border-bottom: 1px solid var(--border); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; padding-block: 1.1rem; }
+  .brand { font-family: var(--serif); font-size: var(--fs-md); color: var(--text); text-decoration: none; }
+  .brand:hover { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: var(--space-3); margin: 0; padding: 0; }
+  nav a { font-size: var(--fs-sm); color: var(--muted); text-decoration: none; padding-block: 0.25rem; }
+  nav a:hover { color: var(--text); }
+  nav a[aria-current='page'] { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.45em; text-decoration-thickness: 2px; }
   .menu-toggle {
-    font: inherit; font-size: 0.9rem; font-weight: 500; background: var(--surface); color: var(--text);
-    border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 0.9rem; cursor: pointer;
+    font: inherit; font-size: var(--fs-sm); font-weight: 500; background: transparent; color: var(--text);
+    border: 1px solid var(--border); border-radius: var(--r-sm); padding: 0.35rem 0.8rem; cursor: pointer;
   }
   @media (min-width: 48rem) { .menu-toggle { display: none; } }
   @media (max-width: 47.99rem) {
-    .pill { width: 100%; max-width: 30rem; justify-content: space-between; border-radius: 22px; }
     :global(html.js) nav { display: none; width: 100%; }
     :global(html.js) nav[data-open='true'] { display: block; }
-    nav ul { flex-direction: column; padding: 0.25rem 0 0.35rem; }
-    nav a { padding: 0.65rem 0.85rem; font-size: 1rem; border-radius: 14px; }
-    .pill:has(nav[data-open='true']) { background: rgb(255 255 255 / 0.98); box-shadow: 0 2px 6px rgb(20 18 20 / 0.08), 0 20px 40px rgb(20 18 20 / 0.14); }
+    nav ul { flex-direction: column; gap: 0; }
+    nav a { display: block; padding: 0.75rem 0; font-size: var(--fs-base); border-top: 1px solid var(--border); }
+    nav a[aria-current='page'] { text-underline-offset: 0.3em; }
   }
 </style>
