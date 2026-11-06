@@ -23,6 +23,13 @@ export const iyc14 = {
   when: 'September 2026',
   role: 'Delegate',
   statement: 'Delivered a youth statement on September 23.',
+  photo: {
+    src: '/images/iyc14-youth-statement.jpg',
+    alt: 'Reyna Gowie at a podium in front of an International Youth Conference backdrop, delivering a youth statement.',
+    caption: 'Delivering my youth statement at IYC14 in New York City.',
+    // Frame from the IYC14 livestream. Confirm it's OK to post, then keep or adjust this credit.
+    credit: 'IYC14 livestream' as string | null,
+  },
 };
 
 export const participation = [
