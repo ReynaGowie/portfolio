@@ -5,7 +5,8 @@ import { technicalProjects } from '../data/cv';
 import { url } from '../lib/url';
 ---
 <BaseLayout title="Projects" description={`Selected work by Reyna Gowie: Python and research projects, the ${guessWho.title} course, and leadership of Students Teaching Students.`}>
-  <div class="narrow page-head">
+  <div class="narrow hero-panel pat-grid">
+    <p class="eyebrow">Projects</p>
     <h1>Selected work</h1>
     <p class="lede">Software, research, and course design. Each project is about how systems work for the people inside them.</p>
   </div>
@@ -24,7 +25,7 @@ import { url } from '../lib/url';
     </div>
   </section>
 
-  <h2 class="narrow label block">Course design and leadership</h2>
+  <div class="narrow block"><h2 class="label">Course design and leadership</h2></div>
   <article id="guess-who" class="narrow feature card">
     <p class="kicker">Course design <span class="status">In development · launching {guessWho.term}</span></p>
     <h2><em>{guessWho.title}</em></h2>

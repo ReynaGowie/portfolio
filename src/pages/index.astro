@@ -10,7 +10,13 @@ const posts = await getPosts();
 const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${stateOfState.date}`;
 ---
 <BaseLayout title={profile.name} description={`${profile.name}: ${profile.shortBio} Writing on AI, education, and who gets a say in the systems that shape people's lives.`}>
-  <section class="wrap hero">
+  <section class="wrap"><div class="hero-panel pat-dots hero">
+    <ul class="floaters" aria-hidden="true">
+      <li class="chip" style="--tilt:-6deg;top:8%;left:52%">AI engineering</li>
+      <li class="chip" style="--tilt:4deg;top:91%;left:22%">course design</li>
+      <li class="chip" style="--tilt:-3deg;top:89%;left:52%">youth policy</li>
+      <li class="chip" style="--tilt:5deg;top:6%;left:4%">who gets a say?</li>
+    </ul>
     <div class="hero-text">
       <h1>{profile.headline}</h1>
       <p class="lede">I’m Reyna Gowie, an Enterprise Technology Integration student at Penn State and an AI Engineer Co-Op at IBM.</p>
@@ -21,7 +27,7 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
       </div>
     </div>
     <div class="hero-photo tilt" style="--tilt:3deg"><Headshot /></div>
-  </section>
+  </div></section>
 
   <section class="wrap section" aria-labelledby="work-h">
     <div class="section-head">
@@ -40,7 +46,7 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
         <article class="card card-link">
           <p class="meta">Software and research</p>
           <h3><a class="stretch" href={url('/projects/#technical')}>Software and data projects</a></h3>
-          <p class="muted">A deployed web app, a network traffic monitor, a finance analytics dashboard, and research on capacity and productivity across 337,000+ observations.</p>
+          <p class="muted">A network traffic monitor, a finance analytics dashboard, a front-end web prototype, and research on capacity and productivity across 337,000+ observations.</p>
         </article>
         <article class="card card-link">
           <p class="meta">Student leadership <span class="status">Current</span></p>
@@ -82,7 +88,12 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
 </BaseLayout>
 
 <style>
-  .hero { display: grid; gap: var(--space-4); align-items: center; }
+  .hero { display: grid; gap: var(--space-4); align-items: center; padding-block: clamp(3rem, 7vw, 5rem); }
+  .hero > :not(.floaters) { position: relative; z-index: 1; }
+  .floaters { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; pointer-events: none; display: none; }
+  .floaters li { position: absolute; transform: rotate(var(--tilt)); color: var(--accent); font-size: var(--fs-sm); }
+  .floaters li:nth-child(odd) { background: var(--accent-soft); border-color: transparent; }
+  @media (min-width: 64rem) { .floaters { display: block; } }
   @media (min-width: 52rem) { .hero { grid-template-columns: 1fr 19rem; gap: var(--space-5); } }
   .hero h1 { max-width: 15ch; margin-bottom: var(--space-3); }
   .hero-photo { max-width: 19rem; justify-self: center; }

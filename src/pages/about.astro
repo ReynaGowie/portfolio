@@ -36,10 +36,12 @@ const certMore = certifications.slice(3);
 ---
 <BaseLayout title="About" description={`About ${profile.name}: Enterprise Technology Integration at Penn State, AI Engineer Co-Op at IBM, and president of Students Teaching Students.`}>
   <div class="narrow">
-    <PhotoStrip photos={photos} />
+    <div class="hero-panel pat-dots about-hero">
+      <PhotoStrip photos={photos} />
+      <h1>Hi, I’m Reyna</h1>
+    </div>
 
     <div class="card intro">
-      <h1>Hi, I’m Reyna</h1>
       <div class="prose">
         <p>I’m interested in what happens between a system working as designed and actually working for someone.</p>
         <p>At Penn State, I study Enterprise Technology Integration: how organizations choose, build, and run technology systems. I’m a Millennium Scholar and am also earning the Smeal College Business Fundamentals Certificate. Alongside school, I work as an AI Engineer Co-Op at IBM, applying AI to business problems.</p>
@@ -96,7 +98,8 @@ const certMore = certifications.slice(3);
   </div>
 </BaseLayout>
 <style>
-  .intro h1 { margin-bottom: var(--space-2); }
+  .about-hero { text-align: center; padding-bottom: var(--space-3); }
+  .about-hero h1 { margin: 0; }
   .intro .prose { font-size: var(--fs-base); }
   .block { margin-top: var(--space-4); }
   .row .t { font-weight: 500; margin: 0; }

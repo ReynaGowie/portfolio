@@ -65,11 +65,11 @@ export const technicalProjects = [
   {
     id: 'crunch',
     title: 'Crunch',
-    kind: 'Web app (React, TypeScript, Supabase)',
+    kind: 'Front-end prototype (React, TypeScript)',
     when: 'September 2025',
     summary:
-      'A restaurant discovery prototype for seed-oil-free and diet-conscious dining. I built it with React, Vite, TypeScript, and Supabase and deployed it on Vercel, with dynamic filtering and database-backed restaurant profiles.',
-    link: { label: 'Try the live app', url: 'https://crunch-liart.vercel.app/' },
+      'A design prototype for a restaurant discovery platform focused on seed-oil-free and diet-conscious dining. I built the interface, filtering, and profile layouts with React, Vite, and TypeScript and deployed it on Vercel. It isn’t connected to real restaurant data yet.',
+    link: { label: 'View the prototype', url: 'https://crunch-liart.vercel.app/' },
   },
   {
     id: 'operating-density-dashboard',

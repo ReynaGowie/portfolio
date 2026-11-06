@@ -4,6 +4,8 @@
   - Shadows: one soft shadow for floating things, one lifted shadow on hover
   - Surfaces: page → soft panel (grouped content) → white card
   - Signature: real photos sit on slightly tilted cards that straighten on hover
+  - Backgrounds: flat page; each page opens with a hero panel whose pattern fits it
+    (dot grid, blueprint grid, sound-wave rings, ruled notebook). No color washes.
   - Type: 5 sizes (14 / 17 / 20 / 28 / 44); italic serif only for page titles
 */
 :root {
@@ -59,16 +61,6 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-/* A light plum and rose wash at the top of every page */
-body::before {
-  content: '';
-  position: absolute; inset: 0 0 auto 0; height: 30rem; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(38rem 18rem at 10% 0%, #ecdcef, transparent 70%),
-    radial-gradient(34rem 16rem at 90% 0%, #f6e1e8, transparent 70%);
-  mask-image: linear-gradient(to bottom, #000 35%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent);
-}
 img, svg { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3 {
@@ -97,7 +89,7 @@ a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
 
 .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
 .narrow { width: min(100% - 2rem, 46rem); margin-inline: auto; }
-main { display: block; padding-block: 7rem var(--space-6); }
+main { display: block; padding-block: 6rem var(--space-6); }
 main:focus { outline: none; }
 
 .eyebrow { font-size: var(--fs-sm); color: var(--muted); font-weight: 500; margin-bottom: var(--space-1); }
@@ -181,4 +173,30 @@ details.more > div > * + * { margin-top: 0.6rem; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .tilt:hover, .card-link:hover, .btn:hover { transform: rotate(var(--tilt, -2deg)); }
   .card-link:hover, .btn:hover { transform: none; }
+}
+
+/* Themed hero panels */
+.hero-panel {
+  position: relative; overflow: hidden; isolation: isolate;
+  background-color: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3.5rem);
+  margin-bottom: var(--space-4);
+}
+.hero-panel > :last-child { margin-bottom: 0; }
+.pat-dots { background-image: radial-gradient(rgb(107 45 92 / 0.2) 1.1px, transparent 1.6px); background-size: 20px 20px; }
+.pat-grid {
+  background-image:
+    linear-gradient(rgb(107 45 92 / 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(107 45 92 / 0.09) 1px, transparent 1px),
+    linear-gradient(rgb(107 45 92 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(107 45 92 / 0.04) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -1px -1px;
+}
+.pat-rings { background-image: repeating-radial-gradient(circle at 92% 50%, transparent 0 26px, rgb(107 45 92 / 0.1) 26px 27px); }
+.pat-ruled {
+  background-image:
+    linear-gradient(90deg, transparent 2.25rem, rgb(181 72 127 / 0.35) 2.25rem, rgb(181 72 127 / 0.35) calc(2.25rem + 1px), transparent calc(2.25rem + 1px)),
+    repeating-linear-gradient(transparent 0 31px, rgb(107 45 92 / 0.1) 31px 32px);
+  padding-left: clamp(3.25rem, 6vw, 4.5rem);
 }
