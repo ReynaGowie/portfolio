@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleRow from '../../components/ArticleRow.astro';
 import { getPosts } from '../../lib/posts';
+import { elsewhere } from '../../data/cv';
 const posts = await getPosts();
 ---
 <BaseLayout title="Blog" description="Writing by Reyna Gowie on AI, education, and who gets a say in the systems that shape people's lives.">
@@ -13,5 +14,25 @@ const posts = await getPosts();
     <div class="list">
       {posts.map((post) => <ArticleRow post={post} headingLevel="h2" showImage />)}
     </div>
+
+    <section class="elsewhere" aria-labelledby="elsewhere-h">
+      <h2 id="elsewhere-h">Also on LinkedIn</h2>
+      <ul>
+        {elsewhere.map((a) => (
+          <li>
+            <a href={a.url} rel="noopener">{a.title}</a>
+            <span class="small muted">{a.outlet}, {a.when}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 </BaseLayout>
+<style>
+  .elsewhere { margin-top: var(--space-5); border-top: 1px solid var(--text); padding-top: var(--space-2); }
+  .elsewhere h2 { font-size: var(--fs-lg); }
+  .elsewhere ul { list-style: none; padding: 0; margin: 0; }
+  .elsewhere li { display: grid; gap: 0.15rem; padding-block: 0.75rem; border-bottom: 1px solid var(--border); }
+  .elsewhere a { font-size: var(--fs-md); text-decoration: none; color: var(--text); }
+  .elsewhere a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
+</style>

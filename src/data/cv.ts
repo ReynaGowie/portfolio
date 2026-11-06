@@ -23,6 +23,7 @@ export const skills = [
 ];
 
 export const certifications = [
+  { name: 'watsonx.governance Sales Foundation', issuer: 'IBM', when: 'October 2026' },
   { name: 'IBM Bob Intermediate', issuer: 'IBM', when: 'July 2026' },
   { name: 'Enterprise Design Thinking Practitioner', issuer: 'IBM', when: 'July 2026' },
   { name: 'Social and Behavioral Human Subjects Research (IRB)', issuer: 'CITI Program', when: 'March 2026' },
@@ -47,6 +48,15 @@ export const technicalProjects = [
     summary:
       'A packet-analysis tool that reads PCAP files and turns raw network traffic into readable signals, such as protocol mix, host concentration, DNS activity, and repeated connection attempts. A System Strain Index flags concentrated load and retry patterns, and the tool writes CSV, JSON, and Markdown reports.',
     link: { label: 'Code on GitHub', url: 'https://github.com/ReynaGowie/network-strain-monitor' },
+  },
+  {
+    id: 'crunch',
+    title: 'Crunch',
+    kind: 'Web app (React, TypeScript, Supabase)',
+    when: 'September 2025',
+    summary:
+      'A restaurant discovery prototype for seed-oil-free and diet-conscious dining. I built it with React, Vite, TypeScript, and Supabase and deployed it on Vercel, with dynamic filtering and database-backed restaurant profiles.',
+    link: { label: 'Try the live app', url: 'https://crunch-liart.vercel.app/' },
   },
   {
     id: 'operating-density-dashboard',
@@ -79,6 +89,12 @@ export const technicalProjects = [
 
 export const presentations = [
   {
+    title: 'From Optimization to Capacity Support: Rethinking AI Assistants for Health-Aware Work',
+    venue: 'AIxPH 2026, Artificial Intelligence and Public Health Conference, Baltimore, MD',
+    when: 'October 2026',
+    kind: 'Poster',
+  },
+  {
     title: 'Empowering Women at Work: A Literature Review of the Intersection Between Menstrual Health, Sustainable Productivity, and United Nations’ Sustainable Development Goals 3, 5, and 8',
     venue: 'SACNAS NDiSTEM Conference, Phoenix, AZ',
     when: '2024',
@@ -95,5 +111,21 @@ export const presentations = [
     venue: 'Mount Saint Dominic Academy Research Symposium, West Caldwell, NJ',
     when: '2023',
     kind: 'Poster',
+  },
+];
+
+// Writing published elsewhere (linked, not copied).
+export const elsewhere = [
+  {
+    title: 'What AIxPH showed me about the people side of AI in public health',
+    outlet: 'LinkedIn',
+    when: 'October 2026',
+    url: 'https://www.linkedin.com/pulse/what-aixph-showed-me-people-side-ai-public-health-reyna-simone-gowie-5onne/',
+  },
+  {
+    title: 'Who Gets to Define Success for AI? Notes from UNGA 81',
+    outlet: 'LinkedIn',
+    when: 'September 2026',
+    url: 'https://www.linkedin.com/pulse/who-gets-define-success-ai-notes-from-unga-81-reyna-simone-gowie-l7fsc/',
   },
 ];
