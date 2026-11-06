@@ -32,45 +32,62 @@ export const iyc14 = {
   },
 };
 
+// Listed newest first on the Speaking page (sorted by `date`).
 export const participation = [
   {
     event: 'UNA-USA Town Hall with the Candidates for UN Secretary-General',
     when: 'July 2026, United Nations Headquarters',
+    // Sort key (ISO date; ongoing roles use 9999 so they stay on top)
+    date: '2026-07-01',
     label: 'Delegate, selected to represent UNA-USA',
   },
   {
     event: 'International AI Safety Commission convening, Global Council for Responsible AI',
-    when: 'September 2026, New York',
+    when: 'September 20, 2026, New York',
+    // Sort key (ISO date; ongoing roles use 9999 so they stay on top)
+    date: '2026-09-20',
     label: 'Attended',
   },
   {
     event: '13th International Youth Conference (IYC13)',
     when: 'May 2026, virtual',
+    // Sort key (ISO date; ongoing roles use 9999 so they stay on top)
+    date: '2026-05-21',
     label: 'Delegate',
   },
   {
     event: 'World Bank Group Youth Summit 2026',
-    when: '2026, virtual',
+    when: 'June 2026, virtual',
+    // Sort key (ISO date; ongoing roles use 9999 so they stay on top)
+    date: '2026-06-11',
     label: 'Virtual delegate',
   },
   {
     event: 'SDSN Youth and Ford Foundation Americas Consultation',
     when: 'May 2026, virtual',
+    // Sort key (ISO date; ongoing roles use 9999 so they stay on top)
+    date: '2026-05-01',
     label: 'Contributed written youth perspectives on AI and sustainable development',
   },
   {
     event: 'EuroDIG 2026',
     when: 'May 2026, virtual',
+    // Sort key (ISO date; ongoing roles use 9999 so they stay on top)
+    date: '2026-05-26',
     label: 'Participant',
   },
   {
     event: 'United Nations Association of the USA, National Young Professionals',
     when: '2026–present',
+    // Sort key (ISO date; ongoing roles use 9999 so they stay on top)
+    date: '9999-12-31',
     label: 'Member',
   },
   {
     event: 'UN Digital Cooperation Day',
     when: 'September 21, 2026',
+    // Sort key (ISO date; ongoing roles use 9999 so they stay on top)
+    date: '2026-09-21',
     label: 'Attended',
     photo: {
       src: '/images/un-digital-cooperation-day.jpg',

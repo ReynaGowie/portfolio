@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { profile } from '../data/profile';
-import { stateOfState, iyc14, participation } from '../data/speaking';
+import { stateOfState, iyc14, participation as rawParticipation } from '../data/speaking';
+const participation = [...rawParticipation].sort((a, b) => b.date.localeCompare(a.date));
 import { url } from '../lib/url';
 import { presentations } from '../data/cv';
 ---
