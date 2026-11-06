@@ -108,19 +108,22 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
     }, 2400);
   });
 
-  // A trail of handwritten question marks follows the mouse across the hero.
+  // A trail of small sparkles follows the mouse across the hero.
   const hero = document.querySelector<HTMLElement>('.hero');
   if (hero && !reduce) {
     let lastX = 0, lastY = 0;
     hero.addEventListener('pointermove', (e) => {
       if (e.pointerType !== 'mouse') return;
-      if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 70) return;
+      if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 45) return;
       lastX = e.clientX; lastY = e.clientY;
       const r = hero.getBoundingClientRect();
       const m = document.createElement('span');
       m.className = 'mark';
       m.setAttribute('aria-hidden', 'true');
-      m.textContent = '?';
+      // Four-point sparkle drawn as an inline SVG so it looks the same on every device.
+      const size = 10 + Math.round(Math.random() * 10);
+      m.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.9 6.6 5.4 11.1 12 12-6.6.9-11.1 5.4-12 12-.9-6.6-5.4-11.1-12-12C6.6 11.1 11.1 6.6 12 0Z" fill="currentColor"/></svg>`;
+      if (Math.random() < 0.35) m.classList.add('soft');
       m.style.left = `${e.clientX - r.left}px`;
       m.style.top = `${e.clientY - r.top}px`;
       m.style.setProperty('--r', `${Math.round(Math.random() * 40 - 20)}deg`);
@@ -139,7 +142,8 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
   @media (min-width: 64rem) { .floaters { display: block; } }
   .cycle { display: inline-block; font-size: 1.3em; line-height: 0.8; margin-right: 0.18em; transition: opacity 260ms ease, transform 260ms ease; }
   .cycle.out { opacity: 0; transform: translateY(0.25em) rotate(-3deg); }
-  .hero :global(.mark) { position: absolute; z-index: 0; pointer-events: none; font-family: var(--script); font-weight: 600; color: var(--accent); font-size: 1.6rem; line-height: 1; animation: drift 1100ms ease-out forwards; }
+  .hero :global(.mark) { position: absolute; z-index: 0; pointer-events: none; color: var(--accent); line-height: 0; animation: drift 1100ms ease-out forwards; }
+  .hero :global(.mark.soft) { color: #c88aa9; }
   @keyframes drift { from { opacity: 0.7; transform: translate(-50%, -50%) rotate(var(--r)) scale(0.8); } to { opacity: 0; transform: translate(-50%, -140%) rotate(var(--r)) scale(1.1); } }
   @media (min-width: 52rem) { .hero { grid-template-columns: 1fr 19rem; gap: var(--space-5); } }
   .hero h1 { max-width: none; margin-bottom: var(--space-3); }
