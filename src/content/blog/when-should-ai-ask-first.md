@@ -5,14 +5,14 @@ topic: Responsible AI
 order: 2
 status: review
 image:
-  src: /images/ask-first.svg
-  alt: "Fictional assistant screen with two steps. Comparing flight options runs automatically. Buying a nonrefundable ticket waits for an Approve or Edit choice."
-  caption: "A fictional approval screen: comparing flights can be automatic, but buying a nonrefundable ticket waits for a person."
-  creator: Illustration made for this site (fictional interface, not a real product)
-  sourceUrl: /images/ask-first.svg
-  license: Original site illustration
+  src: /images/passport-boarding-passes-laptop.jpg
+  alt: "A U.S. passport and two sample boarding passes resting on a closed silver laptop."
+  caption: "A passport and boarding passes on a laptop."
+  creator: "Photo: RDNE Stock project on Pexels"
+  sourceUrl: https://www.pexels.com/photo/close-up-shot-of-a-passport-and-tickets-on-top-of-a-laptop-7310015/
+  license: Pexels License
   placeholder: false
-  approved: false
+  approved: true
 sources:
   - publisher: Walmart Inc. (corporate news)
     title: Walmart Makes It Possible for Agents to Shop on Behalf of Customers, While Keeping Customers in Control
@@ -40,6 +40,11 @@ I think people should be able to specify those limits before an agent acts. “R
 An assistant that interrupts for every minor step becomes another task to manage. I wouldn’t want to approve each search result before it could compare flights and show me the options.
 
 I would want a checkpoint before it bought a nonrefundable ticket, unless I’d already authorized that purchase under specific conditions. The cost and difficulty of undoing it should affect when the agent asks.
+
+<figure>
+  <img src="../../images/ask-first.svg" alt="Fictional assistant screen with two steps. Comparing flight options runs automatically. Buying a nonrefundable ticket waits for an Approve or Edit choice." width="1200" height="675" loading="lazy" />
+  <figcaption>A fictional approval screen: comparing flights can be automatic, but buying a nonrefundable ticket waits for a person. Illustration made for this site. <a href="../../images/ask-first.svg">Image source</a></figcaption>
+</figure>
 
 The same distinction matters at work. An agent might have permission to draft a message without permission to send it. Access to an inbox doesn’t establish what someone wants done there.
 

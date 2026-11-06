@@ -5,14 +5,14 @@ topic: Education
 order: 3
 status: review
 image:
-  src: /images/guess-who-structure.svg
-  alt: "Diagram of the Guess Who? course sequence: a two-week Unit 0 on foundations, then partner work under consent and privacy guidelines, then a final project graded across six checkpoints."
-  caption: "How Guess Who? is sequenced so ethics and consent come before partner work."
-  creator: Illustration made for this site
-  sourceUrl: /images/guess-who-structure.svg
-  license: Original site illustration
+  src: /images/students-library-table.jpg
+  alt: "Students talking around a library table covered with books and a laptop while an older man stands nearby holding a book."
+  caption: "Students working together at a library table."
+  creator: "Photo: Yan Krukau on Pexels"
+  sourceUrl: https://www.pexels.com/photo/group-of-people-sitting-on-chair-in-front-of-table-8199558/
+  license: Pexels License
   placeholder: false
-  approved: false
+  approved: true
 sources:
   - publisher: ASU News
     title: Project Gen Z asks whether college teaching is working for current students
@@ -42,6 +42,11 @@ My hardest design decision was how much structure to put around privacy and cons
 On Professor John Christman’s suggestion, I added a two-week foundations unit before partner work. I also wrote guidelines covering privacy, consent, the right to withhold information, and respectful representation.
 
 Students will have the right to correct their representation and access an alternative assignment. I also divided the final project into six graded checkpoints, creating opportunities to review work before the final presentation.
+
+<figure>
+  <img src="../../images/guess-who-structure.svg" alt="Diagram of the Guess Who? course sequence: a two-week Unit 0 on foundations, then partner work under consent and privacy guidelines, then a final project graded across six checkpoints." width="1200" height="675" loading="lazy" />
+  <figcaption>How Guess Who? is sequenced so ethics and consent come before partner work. Illustration made for this site. <a href="../../images/guess-who-structure.svg">Image source</a></figcaption>
+</figure>
 
 The course hasn’t run yet, so I can’t claim these choices have worked. Their purpose is to let students explore identity while keeping control over what they share.
 
