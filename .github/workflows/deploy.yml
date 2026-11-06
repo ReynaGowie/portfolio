@@ -22,7 +22,7 @@ concurrency:
 env:
   SITE_URL: https://reynagowie.github.io
   BASE_PATH: /portfolio    # project site, served under /portfolio/
-  PUBLIC_INDEXABLE: "false" # flip to "true" when you want search engines to index the site
+  PUBLIC_INDEXABLE: "true" # set to "false" to hide the site from search engines
 
 jobs:
   build:

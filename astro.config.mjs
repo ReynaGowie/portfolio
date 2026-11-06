@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // Deployment origin and base path come from environment variables so the
 // same source works locally, on Vercel (root), and on a GitHub Pages
@@ -15,5 +16,7 @@ export default defineConfig({
   site,
   base,
   trailingSlash: 'always',
+  // A sitemap needs the real site address, so it's only built when SITE_URL is set.
+  integrations: site ? [sitemap()] : [],
   build: { format: 'directory' },
 });

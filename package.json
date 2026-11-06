@@ -15,6 +15,7 @@
     "check:final": "node scripts/check-content.mjs --final"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.4.5",
     "matter-js": "^0.20.0"
   },
