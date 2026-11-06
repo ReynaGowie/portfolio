@@ -1,0 +1,53 @@
+<!-- Decorative: small sparkles follow the mouse and drift up as you scroll.
+     Mouse only (not touch), and off when the visitor prefers reduced motion. -->
+<div class="sparkle-layer" data-sparkles aria-hidden="true"></div>
+
+<script>
+  const layer = document.querySelector<HTMLElement>('[data-sparkles]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(pointer: fine)').matches;
+
+  if (layer && !reduce && fine) {
+    const path = 'M12 0c.9 6.6 5.4 11.1 12 12-6.6.9-11.1 5.4-12 12-.9-6.6-5.4-11.1-12-12C6.6 11.1 11.1 6.6 12 0Z';
+    let mouse: { x: number; y: number } | null = null;
+    let lastX = 0, lastY = 0, lastScroll = window.scrollY;
+
+    const spawn = (x: number, y: number) => {
+      if (layer.childElementCount > 40) return;
+      const size = 10 + Math.round(Math.random() * 10);
+      const s = document.createElement('span');
+      s.className = 'sparkle';
+      if (Math.random() < 0.35) s.classList.add('soft');
+      s.style.left = `${x + (Math.random() * 16 - 8)}px`;
+      s.style.top = `${y + (Math.random() * 16 - 8)}px`;
+      s.style.setProperty('--r', `${Math.round(Math.random() * 40 - 20)}deg`);
+      s.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><path d="${path}" fill="currentColor"/></svg>`;
+      layer.appendChild(s);
+      s.addEventListener('animationend', () => s.remove());
+    };
+
+    window.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      mouse = { x: e.clientX, y: e.clientY };
+      if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 45) return;
+      lastX = e.clientX; lastY = e.clientY;
+      spawn(e.clientX, e.clientY);
+    }, { passive: true });
+
+    window.addEventListener('scroll', () => {
+      if (!mouse || Math.abs(window.scrollY - lastScroll) < 70) return;
+      lastScroll = window.scrollY;
+      spawn(mouse.x, mouse.y);
+    }, { passive: true });
+  }
+</script>
+
+<style>
+  .sparkle-layer { position: fixed; inset: 0; pointer-events: none; z-index: 40; overflow: hidden; }
+  .sparkle-layer :global(.sparkle) { position: absolute; color: var(--accent); line-height: 0; animation: sparkle-drift 1100ms ease-out forwards; }
+  .sparkle-layer :global(.sparkle.soft) { color: #c88aa9; }
+  @keyframes sparkle-drift {
+    from { opacity: 0.75; transform: translate(-50%, -50%) rotate(var(--r)) scale(0.8); }
+    to { opacity: 0; transform: translate(-50%, -150%) rotate(var(--r)) scale(1.1); }
+  }
+</style>
