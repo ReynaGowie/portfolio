@@ -10,15 +10,12 @@ const posts = await getPosts();
 const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${stateOfState.date}`;
 ---
 <BaseLayout title={profile.name} description={`${profile.name}: ${profile.shortBio} Writing on AI, education, and who gets a say in the systems that shape people's lives.`}>
-  <section class="wrap"><div class="hero-panel pat-dots hero">
-    <ul class="floaters" aria-hidden="true">
-      <li class="chip" style="--tilt:-6deg;top:8%;left:52%">AI engineering</li>
-      <li class="chip" style="--tilt:4deg;top:91%;left:22%">course design</li>
-      <li class="chip" style="--tilt:-3deg;top:89%;left:52%">youth policy</li>
-      <li class="chip" style="--tilt:5deg;top:6%;left:4%">who gets a say?</li>
-    </ul>
+  <section class="wrap"><div class="hero-panel hero">
     <div class="hero-text">
-      <h1>{profile.headline}</h1>
+      <h1>
+        <span class="sr-only">{profile.headline}</span>
+        <span aria-hidden="true">I <span class="cycle script" data-cycle="build,design,test,question,study">build</span> AI<br />and ask who it’s built for.</span>
+      </h1>
       <p class="lede">I’m Reyna Gowie, an Enterprise Technology Integration student at Penn State and an AI Engineer Co-Op at IBM.</p>
       <p class="lede">My work connects technology, education, and a question I keep coming back to: who gets a say in the systems that shape their lives?</p>
       <div class="actions">
@@ -87,15 +84,55 @@ const talkStatus = stateOfState.delivered ? stateOfState.date : `Scheduled · ${
   </section>
 </BaseLayout>
 
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Cycle the handwritten verb in the headline.
+  const word = document.querySelector<HTMLElement>('.cycle');
+  if (word && !reduce) document.fonts.ready.then(() => {
+    const words = (word.dataset.cycle || '').split(',');
+    let i = 0;
+    window.setInterval(() => {
+      word.classList.add('out');
+      window.setTimeout(() => {
+        i = (i + 1) % words.length;
+        word.textContent = words[i]!;
+        word.classList.remove('out');
+      }, 260);
+    }, 2400);
+  });
+
+  // A trail of handwritten question marks follows the mouse across the hero.
+  const hero = document.querySelector<HTMLElement>('.hero');
+  if (hero && !reduce) {
+    let lastX = 0, lastY = 0;
+    hero.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 70) return;
+      lastX = e.clientX; lastY = e.clientY;
+      const r = hero.getBoundingClientRect();
+      const m = document.createElement('span');
+      m.className = 'mark';
+      m.setAttribute('aria-hidden', 'true');
+      m.textContent = '?';
+      m.style.left = `${e.clientX - r.left}px`;
+      m.style.top = `${e.clientY - r.top}px`;
+      m.style.setProperty('--r', `${Math.round(Math.random() * 40 - 20)}deg`);
+      hero.appendChild(m);
+      m.addEventListener('animationend', () => m.remove());
+    });
+  }
+</script>
+
 <style>
-  .hero { display: grid; gap: var(--space-4); align-items: center; padding-block: clamp(3rem, 7vw, 5rem); }
-  .hero > :not(.floaters) { position: relative; z-index: 1; }
-  .floaters { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; pointer-events: none; display: none; }
-  .floaters li { position: absolute; transform: rotate(var(--tilt)); color: var(--accent); font-size: var(--fs-sm); }
-  .floaters li:nth-child(odd) { background: var(--accent-soft); border-color: transparent; }
-  @media (min-width: 64rem) { .floaters { display: block; } }
+  .hero { display: grid; gap: var(--space-4); align-items: center; padding-block: clamp(1.5rem, 5vw, 3.5rem); }
+  .hero > * { position: relative; z-index: 1; }
+  .cycle { display: inline-block; font-size: 1.3em; line-height: 0.8; margin-right: 0.18em; transition: opacity 260ms ease, transform 260ms ease; }
+  .cycle.out { opacity: 0; transform: translateY(0.25em) rotate(-3deg); }
+  .hero :global(.mark) { position: absolute; z-index: 0; pointer-events: none; font-family: var(--script); font-weight: 600; color: var(--accent); font-size: 1.6rem; line-height: 1; animation: drift 1100ms ease-out forwards; }
+  @keyframes drift { from { opacity: 0.7; transform: translate(-50%, -50%) rotate(var(--r)) scale(0.8); } to { opacity: 0; transform: translate(-50%, -140%) rotate(var(--r)) scale(1.1); } }
   @media (min-width: 52rem) { .hero { grid-template-columns: 1fr 19rem; gap: var(--space-5); } }
-  .hero h1 { max-width: 15ch; margin-bottom: var(--space-3); }
+  .hero h1 { max-width: none; margin-bottom: var(--space-3); }
   .hero-photo { max-width: 19rem; justify-self: center; }
   .hero-photo :global(.headshot) { border-radius: calc(var(--r) - 5px); max-width: none; }
 
